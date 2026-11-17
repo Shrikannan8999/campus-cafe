@@ -47,12 +47,6 @@ This project strictly avoids all third-party libraries and frameworks, relying 1
 - **Vanilla JavaScript (ES6)**: Pure client-side logic for dynamic DOM manipulation, array filtering, quantity controls, automatic math calculations, and browser `LocalStorage`.
 - **Browser LocalStorage API**: For persisting cart data without a database.
 
-**Strict Restrictions Followed:**
-- ❌ No React, Vue, Angular, or jQuery.
-- ❌ No Bootstrap, Tailwind CSS, or CSS frameworks.
-- ❌ No Node.js, PHP, Python, or backend servers.
-- ❌ No SQL or external database.
-
 ---
 
 ## 6. Key Features
