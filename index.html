@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMPUS CAFÉ – Cafeteria Menu and Order System</title>
+  
+  <!-- Relative CSS link for static hosting and Netlify deployment -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Clean web font for student-friendly typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- =========================================================================
+       NAVIGATION BAR
+       Includes logo, quick links, search shortcut, and live cart counter badge.
+       ========================================================================= -->
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo & Name -->
+      <a href="#home" class="nav-brand">
+        <span class="brand-icon">☕</span>
+        <div class="brand-text">
+          <span class="brand-title">CAMPUS CAFÉ</span>
+          <span class="brand-subtitle">Cafeteria Menu & Order System</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#cart" class="nav-link">Cart</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <!-- Cart Button in Header with dynamic item counter -->
+      <a href="#cart" class="nav-cart-btn" id="headerCartBtn">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-label">Food Tray</span>
+        <span class="cart-badge" id="cartCountBadge">0</span>
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       SECTION A: HOME / HERO SECTION
+       Friendly welcome, introduction, CTA buttons, and cafe visual.
+       ========================================================================= -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      
+      <div class="hero-text">
+        <span class="student-badge">🎓 College Cafeteria Portal</span>
+        <h1 class="hero-title">Fresh, Fast & Affordable Meals for Students</h1>
+        <p class="hero-description">
+          Welcome to <strong>Campus Café</strong>! Skip the rush between lectures, explore today's fresh snacks, 
+          budget-friendly meals, and cooling beverages, and calculate your total before ordering at Counter #1.
+        </p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">🍽️ Explore Menu</a>
+          <a href="#cart" class="btn btn-secondary">🛒 View Food Tray</a>
+        </div>
+        
+        <!-- Quick Highlight Badges -->
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <span class="highlight-icon">⚡</span>
+            <span>Fast Counter Pickup</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">💰</span>
+            <span>Student Budget Prices</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🌿</span>
+            <span>Freshly Prepared</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img 
+          src="images/hero-cafe.svg" 
+          alt="Campus Cafe Order Counter Illustration" 
+          class="hero-image"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION B: MENU SECTION
+       Category filters (Snacks, Meals, Drinks), live search, and dynamic food cards.
+       ========================================================================= -->
+  <section class="menu-section" id="menu">
+    <div class="section-container">
+      
+      <div class="section-title-wrap">
+        <h2 class="section-title">Cafeteria Menu</h2>
+        <p class="section-subtitle">Select a category or search your favorite dishes</p>
+      </div>
+
+      <!-- Controls: Category Filter Tabs & Live Search -->
+      <div class="menu-controls">
+        
+        <!-- Category Filter Buttons -->
+        <div class="category-tabs" id="categoryTabs">
+          <button class="category-btn active" data-category="all">
+            <span class="tab-icon">🍽️</span> All Items
+          </button>
+          <button class="category-btn" data-category="snacks">
+            <span class="tab-icon">🥪</span> Snacks
+          </button>
+          <button class="category-btn" data-category="meals">
+            <span class="tab-icon">🍛</span> Meals
+          </button>
+          <button class="category-btn" data-category="drinks">
+            <span class="tab-icon">🥤</span> Drinks
+          </button>
+        </div>
+
+        <!-- Live Search Bar -->
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search snacks, meals, drinks..."
+            aria-label="Search food items"
+          />
+        </div>
+
+      </div>
+
+      <!-- Live Items Status Header -->
+      <div class="menu-status-bar">
+        <h3 id="currentCategoryTitle">All Items</h3>
+        <span class="items-count-badge" id="itemsCountText">Showing 13 items</span>
+      </div>
+
+      <!-- Dynamic Food Cards Grid (Populated by JavaScript) -->
+      <div class="menu-grid" id="menuGrid">
+        <!-- JavaScript will automatically create and inject food cards here -->
+      </div>
+
+      <!-- Message shown when no food item matches search/filter -->
+      <div class="no-items-message" id="noItemsMessage" style="display: none;">
+        <div class="no-items-icon">🍽️</div>
+        <h3>No matching food items found</h3>
+        <p>Try searching for another dish like "burger", "dosa", or "coffee".</p>
+        <button class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTIONS C & D: SHOPPING CART & ORDER SUMMARY
+       Displays selected items, quantity controls, subtotal, and total amount.
+       ========================================================================= -->
+  <section class="cart-section" id="cart">
+    <div class="section-container">
+      
+      <div class="section-title-wrap">
+        <h2 class="section-title">Your Food Tray & Order Summary</h2>
+        <p class="section-subtitle">Review your selected items, adjust quantities, and calculate your bill</p>
+      </div>
+
+      <div class="cart-layout">
+        
+        <!-- LEFT: Cart Items List -->
+        <div class="cart-items-panel">
+          <div class="panel-header">
+            <h3>Selected Food Items</h3>
+            <button class="btn-clear" id="clearCartBtn" title="Remove all items from tray">
+              🗑️ Clear Tray
+            </button>
+          </div>
+
+          <!-- Dynamic Cart Items Container -->
+          <div class="cart-items-list" id="cartItemsList">
+            <!-- JavaScript will render cart items here or display empty tray message -->
+          </div>
+        </div>
+
+        <!-- RIGHT: Order Summary & Checkout -->
+        <div class="order-summary-panel">
+          <div class="summary-card">
+            <h3 class="summary-title">Order Summary</h3>
+
+            <div class="summary-row">
+              <span>Items Subtotal</span>
+              <span class="summary-value" id="summarySubtotal">₹0.00</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Canteen Tax (5% GST)</span>
+              <span class="summary-value" id="summaryTax">₹0.00</span>
+            </div>
+
+            <div class="summary-row benefit-row">
+              <span>Student Campus Fee</span>
+              <span class="free-tag">FREE</span>
+            </div>
+
+            <hr class="summary-divider">
+
+            <div class="summary-row grand-total-row">
+              <strong>Grand Total</strong>
+              <strong class="grand-total-amount" id="summaryGrandTotal">₹0.00</strong>
+            </div>
+
+            <!-- Place Order Button -->
+            <button class="btn btn-place-order" id="placeOrderBtn" disabled>
+              Place Simulated Order
+            </button>
+
+            <p class="summary-note">
+              ℹ️ <strong>Academic Demo:</strong> This order is simulated for continuous assessment evaluation.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION E: ORDER CONFIRMATION MODAL / POPUP
+       Displays order reference number, items, total, and clears cart upon confirmation.
+       ========================================================================= -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal-box">
+      
+      <div class="modal-header-icon">🎉</div>
+      <h2 class="modal-title">Order Placed Successfully!</h2>
+      <p class="modal-subtitle">Your simulated order has been registered at Campus Café.</p>
+
+      <div class="order-receipt-card">
+        
+        <div class="receipt-row highlight-box">
+          <div>
+            <span class="receipt-label">Order Reference No.</span>
+            <div class="receipt-order-id" id="receiptOrderId">CC-58219</div>
+          </div>
+          <div>
+            <span class="receipt-label">Pickup Token</span>
+            <div class="receipt-token" id="receiptTokenNumber">#T-104</div>
+          </div>
+        </div>
+
+        <div class="receipt-details">
+          <div class="receipt-row">
+            <span>Total Food Items:</span>
+            <strong id="receiptItemCount">0 items</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Amount Paid (Simulated):</span>
+            <strong class="receipt-total" id="receiptTotalAmount">₹0.00</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Pickup Location:</span>
+            <strong>Counter #1 (Main Cafeteria)</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Estimated Preparation:</span>
+            <strong>10 – 15 Minutes</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary modal-close-btn" id="closeModalBtn">
+        Start New Order
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       SECTION F: ABOUT SECTION
+       Explaining the Campus Café project, purpose, and student benefits.
+       ========================================================================= -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      
+      <div class="section-title-wrap">
+        <h2 class="section-title">About Campus Café</h2>
+        <p class="section-subtitle">Continuous Assessment (CA) Mini Project</p>
+      </div>
+
+      <div class="about-grid">
+        
+        <div class="about-card">
+          <div class="about-card-icon">🏫</div>
+          <h3>What is Campus Café?</h3>
+          <p>
+            Campus Café is a student-centered digital cafeteria menu and ordering prototype. 
+            It is designed to give college students a quick, transparent, and enjoyable way to 
+            browse available food, check exact menu prices, and calculate their food expenses.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">💡</div>
+          <h3>Why Was It Developed?</h3>
+          <p>
+            During busy recess and lunch breaks, college canteens face severe rush and long queues. 
+            This website demonstrates how a lightweight, responsive web application can help students 
+            pre-calculate their order and streamline cafeteria counters.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">💻</div>
+          <h3>Technologies Used</h3>
+          <p>
+            Built using <strong>pure HTML5, CSS3, and Vanilla JavaScript</strong> with zero external frameworks. 
+            It leverages modern browser features such as <strong>LocalStorage</strong> for saving cart data 
+            and CSS Grid and Flexbox for mobile responsiveness.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION G: FOOTER
+       Branding, project description, and student copyright.
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="footer-icon">☕</span>
+        <h4>CAMPUS CAFÉ</h4>
+        <p>College Cafeteria Menu & Order System</p>
+      </div>
+
+      <div class="footer-info">
+        <p>Continuous Assessment (CA) Academic Project | Web Technologies</p>
+        <p class="footer-subtext">Developed using HTML5, CSS3 & Vanilla JavaScript (No Frameworks, No Backend)</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Campus Café. For academic evaluation and demonstration purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Relative JavaScript link for static hosting and Netlify deployment -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

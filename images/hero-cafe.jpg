@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9F0" />
+      <stop offset="100%" stop-color="#F5E8D3" />
+    </linearGradient>
+    <filter id="heroShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#3A2312" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="540" height="380" rx="24" fill="url(#heroBg)" />
+  <!-- Cafeteria Counter Desk -->
+  <rect x="50" y="270" width="440" height="60" rx="12" fill="#4A2E1B" filter="url(#heroShadow)"/>
+  <rect x="70" y="260" width="400" height="18" rx="6" fill="#694833" />
+  <rect x="180" y="288" width="180" height="26" rx="13" fill="#E65100" />
+  <text x="270" y="305" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CAMPUS CAFÉ ORDER DESK</text>
+  
+  <!-- Food Platter Left -->
+  <circle cx="140" cy="225" r="45" fill="#FFFFFF" filter="url(#heroShadow)"/>
+  <circle cx="140" cy="225" r="38" fill="#FFF3E0"/>
+  <text x="140" y="235" font-size="38" text-anchor="middle">🍔</text>
+  
+  <!-- Coffee Cup Center -->
+  <circle cx="270" cy="190" r="52" fill="#FFFFFF" filter="url(#heroShadow)"/>
+  <circle cx="270" cy="190" r="44" fill="#FFE0B2"/>
+  <text x="270" y="202" font-size="44" text-anchor="middle">☕</text>
+  <path d="M 260 120 Q 265 100 260 85" stroke="#E65100" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 270 122 Q 275 105 270 90" stroke="#E65100" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 280 120 Q 285 100 280 85" stroke="#E65100" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Drinks & Meal Right -->
+  <circle cx="400" cy="225" r="45" fill="#FFFFFF" filter="url(#heroShadow)"/>
+  <circle cx="400" cy="225" r="38" fill="#E8F5E9"/>
+  <text x="400" y="235" font-size="38" text-anchor="middle">🍱</text>
+
+  <!-- Cute student badge floating -->
+  <g transform="translate(60, 50)" filter="url(#heroShadow)">
+    <rect width="130" height="42" rx="21" fill="#FFFFFF"/>
+    <circle cx="22" cy="21" r="14" fill="#E65100"/>
+    <text x="22" y="25" font-size="14" text-anchor="middle" fill="#FFFFFF">🎓</text>
+    <text x="44" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" fill="#3A2312">Student Special</text>
+  </g>
+
+  <!-- Speed badge floating -->
+  <g transform="translate(360, 50)" filter="url(#heroShadow)">
+    <rect width="120" height="42" rx="21" fill="#FFFFFF"/>
+    <circle cx="22" cy="21" r="14" fill="#2E7D32"/>
+    <text x="22" y="25" font-size="14" text-anchor="middle" fill="#FFFFFF">⚡</text>
+    <text x="44" y="26" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" fill="#3A2312">Quick Pickup</text>
+  </g>
+</svg>
