@@ -124,6 +124,71 @@ const menuItems = [
     price: 30,
     description: "Cooling sweet and salty sparkling cooler made with freshly squeezed lemon juice and mint.",
     image: "images/lime.svg"
+  },
+  // --- NEW ADDITIONS ---
+  {
+    id: 14,
+    name: "Paneer Tikka Roll",
+    category: "snacks",
+    price: 65,
+    description: "Flaky paratha roll stuffed with spiced grilled paneer cubes, crunchy sliced onions, and tangy mint mayo.",
+    image: "images/paneer-roll.svg"
+  },
+  {
+    id: 15,
+    name: "Veg Cutlet",
+    category: "snacks",
+    price: 35,
+    description: "Crispy spiced vegetable croquette served golden-brown with green coriander chutney and tomato dip.",
+    image: "images/cutlet.svg"
+  },
+  {
+    id: 16,
+    name: "Cheese Garlic Bread",
+    category: "snacks",
+    price: 60,
+    description: "Toasted artisan bread brushed with rich garlic herb butter and topped with bubbling mozzarella cheese.",
+    image: "images/garlic-bread.svg"
+  },
+  {
+    id: 17,
+    name: "Chole Bhature",
+    category: "meals",
+    price: 80,
+    description: "Puffy golden fried bhatura paired with slow-cooked spicy chickpea masala, pickled carrots, and onions.",
+    image: "images/chole-bhature.svg"
+  },
+  {
+    id: 18,
+    name: "Paneer Butter Masala",
+    category: "meals",
+    price: 110,
+    description: "Rich cottage cheese cubes simmered in velvety tomato makhani gravy, served with 2 flaky Malabar parottas.",
+    image: "images/paneer-butter-masala.svg"
+  },
+  {
+    id: 19,
+    name: "Curd Rice",
+    category: "meals",
+    price: 50,
+    description: "Cooling seasoned yogurt rice tempered with mustard seeds, curry leaves, ginger, and crunchy pomegranate.",
+    image: "images/curd-rice.svg"
+  },
+  {
+    id: 20,
+    name: "Mango Lassi",
+    category: "drinks",
+    price: 45,
+    description: "Creamy, refreshing sweet yogurt smoothie blended with ripe Alphonso mango pulp and cardamom.",
+    image: "images/mango-lassi.svg"
+  },
+  {
+    id: 21,
+    name: "Badam Milk",
+    category: "drinks",
+    price: 35,
+    description: "Warm, nourishing milk brewed with crushed California almonds, saffron strands, and fragrant spices.",
+    image: "images/badam-milk.svg"
   }
 ];
 
