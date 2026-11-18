@@ -1385,8 +1385,9 @@ button {
 }
 
 .upi-qr-image {
-  width: 180px;
-  height: 215px;
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
   display: block;
   object-fit: contain;
 }
