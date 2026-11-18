@@ -648,44 +648,106 @@ function updateCartDisplay() {
 // =============================================================================
 
 /**
- * Handles checkout and opens the Payment Portal.
+ * Opens the Payment Portal when student clicks "Place Canteen Order".
  */
-function placeOrder() {
-  // Empty cart validation
+function openPaymentPortal() {
   if (cart.length === 0) {
     alert("Your food tray is empty! Please add some delicious items from the menu first.");
     return;
   }
 
-  // Generate random Order Reference Number (e.g. CC-48219)
-  const randomOrderNum = "CC-" + Math.floor(10000 + Math.random() * 90000);
+  // Calculate current grand total
+  let subtotal = 0;
+  cart.forEach(function (item) {
+    subtotal += item.price * item.quantity;
+  });
+  const grandTotal = subtotal + (subtotal * 0.05);
 
-  // Generate random Pickup Token (e.g. #T-104)
-  const randomTokenNum = "#T-" + Math.floor(100 + Math.random() * 900);
+  paymentPayableAmount.textContent = `₹${grandTotal.toFixed(2)}`;
+  confirmPaymentBtn.innerHTML = `<span>Confirm & Pay ₹${grandTotal.toFixed(2)}</span>`;
+  confirmPaymentBtn.disabled = false;
 
-  // Compute final amounts for receipt display
+  updateStudentDisplay();
+  paymentModal.classList.add("active");
+}
+
+/**
+ * Confirms payment and finalizes the cafeteria order.
+ */
+function finalizeOrderAfterPayment() {
   let totalItemsCount = 0;
   let subtotal = 0;
   cart.forEach(function (item) {
     totalItemsCount += item.quantity;
     subtotal += item.price * item.quantity;
   });
-  const tax = subtotal * 0.05;
-  const grandTotal = subtotal + tax;
+  const grandTotal = subtotal + (subtotal * 0.05);
 
-  // Populate receipt modal details
-  receiptOrderId.textContent = randomOrderNum;
-  receiptTokenNumber.textContent = randomTokenNum;
-  receiptItemCount.textContent = `${totalItemsCount} item${totalItemsCount > 1 ? "s" : ""}`;
-  receiptTotalAmount.textContent = `₹${grandTotal.toFixed(2)}`;
+  // If paid via Campus Smart Card, check and deduct balance
+  if (selectedPaymentMethod === "card") {
+    if (currentStudent.cardBalance < grandTotal) {
+      alert(`Insufficient Campus Card Balance! Your balance is ₹${currentStudent.cardBalance.toFixed(2)}, but order total is ₹${grandTotal.toFixed(2)}. Please choose UPI or Cash.`);
+      return;
+    }
+    currentStudent.cardBalance -= grandTotal;
+    saveStudentProfile();
+    updateStudentDisplay();
+  }
 
-  // Open modal popup
-  orderModal.classList.add("active");
+  // Visual processing feedback
+  confirmPaymentBtn.innerHTML = "<span>⏳ Processing Payment...</span>";
+  confirmPaymentBtn.disabled = true;
 
-  // Clear cart state and update LocalStorage
-  cart = [];
-  saveCartToStorage();
-  updateCartDisplay();
+  setTimeout(function () {
+    // Generate Order ID & Token
+    const randomOrderNum = "CC-" + Math.floor(10000 + Math.random() * 90000);
+    const randomTokenNum = "#T-" + Math.floor(100 + Math.random() * 900);
+
+    // Format readable payment method name
+    let methodLabel = "UPI / Google Pay";
+    if (selectedPaymentMethod === "card") methodLabel = "Campus Smart Card";
+    if (selectedPaymentMethod === "cash") methodLabel = "Cash on Pickup";
+
+    // Populate receipt modal
+    receiptOrderId.textContent = randomOrderNum;
+    receiptTokenNumber.textContent = randomTokenNum;
+    receiptItemCount.textContent = `${totalItemsCount} item${totalItemsCount > 1 ? "s" : ""}`;
+    receiptTotalAmount.textContent = `₹${grandTotal.toFixed(2)}`;
+    if (receiptStudentInfo) {
+      receiptStudentInfo.textContent = `${currentStudent.name} (${currentStudent.studentId})`;
+    }
+    if (receiptPaymentMethod) {
+      receiptPaymentMethod.textContent = methodLabel;
+    }
+
+    // Save into past orders history
+    const now = new Date();
+    const orderRecord = {
+      orderId: randomOrderNum,
+      token: randomTokenNum,
+      studentName: currentStudent.name,
+      studentId: currentStudent.studentId,
+      paymentMethod: methodLabel,
+      date: now.toLocaleDateString(),
+      time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      itemsSummary: cart.map(function (item) {
+        return item.name + " (×" + item.quantity + ")";
+      }).join(", "),
+      totalItems: totalItemsCount,
+      grandTotal: grandTotal.toFixed(2)
+    };
+    pastOrders.unshift(orderRecord);
+    saveOrderHistory();
+
+    // Close payment modal and clear cart
+    paymentModal.classList.remove("active");
+    cart = [];
+    saveCartToStorage();
+    updateCartDisplay();
+
+    // Open confirmation receipt
+    orderModal.classList.add("active");
+  }, 800);
 }
 
 placeOrderBtn.addEventListener("click", openPaymentPortal);
