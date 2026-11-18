@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CAMPUS CAFE - Complete Project Viva, Code Breakdown & Explanation Guide</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      color: #2D231A;
+      background-color: #FFFFFF;
+      line-height: 1.6;
+      font-size: 11pt;
+    }
+    h1, h2, h3, h4 {
+      color: #3A2312;
+      font-weight: 700;
+      page-break-after: avoid;
+    }
+    h1 {
+      font-size: 24pt;
+      border-bottom: 3px solid #E65100;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      color: #E65100;
+    }
+    .subtitle {
+      font-size: 13pt;
+      color: #7A573F;
+      margin-top: -6px;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 16pt;
+      border-bottom: 1.5px solid #E5D7CA;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: #3A2312;
+    }
+    h3 {
+      font-size: 13pt;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: #E65100;
+    }
+    p, li {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+    .callout {
+      background-color: #FFF9F2;
+      border-left: 4px solid #E65100;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #E65100;
+      margin-bottom: 4px;
+    }
+    code {
+      font-family: 'Consolas', 'Courier New', monospace;
+      background-color: #F5EBE1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 10pt;
+      color: #BF360C;
+    }
+    pre {
+      background-color: #2D231A;
+      color: #F8F3EA;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 9.5pt;
+      overflow-x: auto;
+      page-break-inside: avoid;
+      margin: 12px 0;
+      line-height: 1.4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #E5D7CA;
+      padding: 8px 10px;
+      font-size: 10pt;
+      text-align: left;
+    }
+    th {
+      background-color: #F3E9DD;
+      color: #3A2312;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background-color: #FAF6F0;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .qa-box {
+      background-color: #FFFFFF;
+      border: 1px solid #E5D7CA;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+      box-shadow: 0 2px 5px rgba(58, 35, 18, 0.04);
+    }
+    .qa-question {
+      font-weight: 700;
+      color: #3A2312;
+      margin-bottom: 6px;
+      font-size: 11pt;
+    }
+    .qa-answer {
+      color: #4A3525;
+      font-size: 10.5pt;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CAMPUS CAFE</h1>
+  <div class="subtitle">Complete Technical Viva Defense, Code Architecture & Project Explanation Guide</div>
+
+  <div class="callout">
+    <div class="callout-title">Purpose of this Document</div>
+    This comprehensive guide is prepared for your <strong>College Continuous Assessment (CA) viva and evaluation</strong>. 
+    It explains every single file, function, data structure, math formula, and line of code in plain English. 
+    You can read this yourself, print it, or upload it directly to ChatGPT to practice answering any viva question!
+  </div>
+
+  <h2>1. High-Level Project Overview</h2>
+  <p>
+    <strong>Project Title:</strong> CAMPUS CAFE - Cafeteria Menu & Order System<br>
+    <strong>Domain:</strong> Client-Side Web Development / Front-End Web Technologies<br>
+    <strong>Tech Stack:</strong> Pure HTML5, CSS3, and Vanilla JavaScript (ES6+)<br>
+    <strong>Data Persistence:</strong> Browser LocalStorage API (No backend, no database required)<br>
+    <strong>Live Demo:</strong> https://shrikannan8999.github.io/campus-cafe/<br>
+    <strong>GitHub Repository:</strong> https://github.com/Shrikannan8999/campus-cafe
+  </p>
+
+  <h3>Why was this project built?</h3>
+  <p>
+    During college lunch and recess breaks, campus cafeterias experience massive queues and counter congestion. 
+    Students lose valuable time deciding what to eat, verifying prices, and calculating their bill. 
+    <strong>Campus Cafe</strong> solves this by offering a responsive, digital ordering portal where students can 
+    view 13 daily cafeteria favorites across <em>Snacks</em>, <em>Meals</em>, and <em>Drinks</em>, search and filter food items, 
+    add dishes to their food tray, adjust quantities, see an automatic bill calculation (Subtotal + 5% GST), 
+    and receive a simulated order reference number and pickup token for Counter #1.
+  </p>
+
+  <h3>The 3-Tier Frontend Architecture</h3>
+  <table>
+    <tr>
+      <th>Layer</th>
+      <th>File</th>
+      <th>Role & Responsibility</th>
+    </tr>
+    <tr>
+      <td><strong>Structure</strong></td>
+      <td><code>index.html</code></td>
+      <td>Defines semantic markup, sections, buttons, modals, and containers.</td>
+    </tr>
+    <tr>
+      <td><strong>Presentation</strong></td>
+      <td><code>css/style.css</code></td>
+      <td>Controls the warm cream, coffee brown, and soft orange color theme, CSS Grid cards, and mobile responsiveness.</td>
+    </tr>
+    <tr>
+      <td><strong>Behavior</strong></td>
+      <td><code>js/script.js</code></td>
+      <td>Contains the menu items database, real-time search, cart math, LocalStorage synchronization, and order generation.</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2>2. File-by-File Technical Breakdown</h2>
+
+  <h3>A. index.html (HTML5 Markup)</h3>
+  <ul>
+    <li><strong>Navigation Bar (&lt;header class="navbar"&gt;):</strong> Contains the brand logo (Campus Cafe), navigation links (Home, Menu, Cart, About), the <strong>Orders</strong> button to view past order history, and the <strong>Food Tray</strong> button with a live badge showing total item count.</li>
+    <li><strong>Hero Section (&lt;section id="home"&gt;):</strong> Displays the student welcome message, quick highlight pills (Fast Counter Pickup, Student Budget Prices, Freshly Prepared), call-to-action buttons, and the cafe counter illustration.</li>
+    <li><strong>Menu Section (&lt;section id="menu"&gt;):</strong>
+      <ul>
+        <li>Category filter tabs: <em>All Items</em>, <em>Snacks</em>, <em>Meals</em>, and <em>Drinks</em>.</li>
+        <li>Live search bar: <code>&lt;input id="searchInput"&gt;</code> for real-time text matching.</li>
+        <li>Status bar: Displays current category and live item count (e.g., "Showing 13 items").</li>
+        <li>Dynamic Grid (<code>&lt;div id="menuGrid"&gt;</code>): Empty in HTML; populated dynamically by JavaScript.</li>
+        <li>Empty State (<code>&lt;div id="noItemsMessage" hidden&gt;</code>): Hidden by default; only displayed when search finds 0 matches.</li>
+      </ul>
+    </li>
+    <li><strong>Cart & Order Summary (&lt;section id="cart"&gt;):</strong>
+      <ul>
+        <li>Left Column: Dynamic cart list with item title, unit price, quantity controls (+/-), item total, and remove button.</li>
+        <li>Right Column: Automatic order summary displaying Items Subtotal, Canteen Tax (5% GST), Campus Student Fee (FREE), Grand Total, and the <strong>Place Canteen Order</strong> button.</li>
+      </ul>
+    </li>
+    <li><strong>Order Confirmation Modal (&lt;div id="orderModal"&gt;):</strong> Popup dialog displaying the simulated Order Reference (e.g., CC-48219), Pickup Token (e.g., #T-104), items count, and total paid.</li>
+    <li><strong>Past Orders History Modal (&lt;div id="pastOrdersModal"&gt;):</strong> Popup dialog showing previous orders retrieved from LocalStorage with a "Clear History" button.</li>
+    <li><strong>About Section (&lt;section id="about"&gt;):</strong> 3 cards explaining <em>What is Campus Cafe?</em>, <em>Why Was It Developed?</em>, and <em>How Does It Work?</em></li>
+  </ul>
+
+  <h3>B. css/style.css (CSS3 Presentation)</h3>
+  <ul>
+    <li><strong>CSS Custom Properties (Variables):</strong> Centralizes color tokens in <code>:root</code> for maintainability.
+<pre><code>:root {
+  --bg-cream: #FDFBF7;         /* Warm background */
+  --coffee-dark: #3A2312;      /* Headings & primary text */
+  --orange-primary: #E65100;   /* Brand orange & buttons */
+  --coffee-border: #E5D7CA;    /* Soft warm borders */
+}</code></pre>
+    </li>
+    <li><strong>CSS Grid for Food Cards:</strong>
+      <code>grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));</code>
+      Automatically fits as many 260px cards as will fit the student's screen, providing natural responsiveness.
+    </li>
+    <li><strong>Flexbox:</strong> Used for 1D alignments: navigation bar items, quantity controls (+/-), and bill rows.</li>
+    <li><strong>Responsive Media Queries:</strong>
+      <ul>
+        <li><code>@media (max-width: 992px)</code>: Switches hero and cart layout from 2 columns to a single column on tablets.</li>
+        <li><code>@media (max-width: 768px)</code>: Stacks navigation links and full-width search input.</li>
+        <li><code>@media (max-width: 480px)</code>: Stacks category buttons vertically for comfortable tap targets on mobile phones.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h3>C. js/script.js (Vanilla JavaScript Logic)</h3>
+
+  <table>
+    <tr>
+      <th>Function / Variable</th>
+      <th>What It Does (Viva Explanation)</th>
+    </tr>
+    <tr>
+      <td><code>menuItems</code></td>
+      <td>Array of 13 food objects across Snacks, Meals, and Drinks. Each object has <code>id</code>, <code>name</code>, <code>category</code>, <code>price</code>, <code>description</code>, and <code>image</code>.</td>
+    </tr>
+    <tr>
+      <td><code>cart</code></td>
+      <td>Array of objects currently in the user's food tray: <code>{ id, name, price, quantity }</code>.</td>
+    </tr>
+    <tr>
+      <td><code>pastOrders</code></td>
+      <td>Array of completed order objects saved in LocalStorage.</td>
+    </tr>
+    <tr>
+      <td><code>displayMenu(items)</code></td>
+      <td>Loops through items using <code>forEach()</code>, dynamically builds HTML cards with template literals, and appends them to <code>#menuGrid</code>. If items array is empty, it displays <code>#noItemsMessage</code>.</td>
+    </tr>
+    <tr>
+      <td><code>applyFilters()</code></td>
+      <td>Combines active category button and live search text. Filters <code>menuItems</code> using <code>.filter()</code> checking <code>item.category === selectedCategory</code> and <code>name.includes(query)</code>.</td>
+    </tr>
+    <tr>
+      <td><code>addToCart(itemId)</code></td>
+      <td>Uses <code>menuItems.find()</code> to get the dish. Then uses <code>cart.find()</code> to check if it's already in the cart. If yes, increments <code>quantity += 1</code>; if not, pushes new object. Calls <code>updateCartDisplay()</code> and <code>saveCartToStorage()</code>.</td>
+    </tr>
+    <tr>
+      <td><code>increaseQuantity(itemId)</code></td>
+      <td>Finds the item in <code>cart</code> and increases its <code>quantity</code> by 1.</td>
+    </tr>
+    <tr>
+      <td><code>decreaseQuantity(itemId)</code></td>
+      <td>Finds item index using <code>findIndex()</code>. If <code>quantity &gt; 1</code>, decrements by 1. If <code>quantity === 1</code>, removes it using <code>cart.splice(index, 1)</code>.</td>
+    </tr>
+    <tr>
+      <td><code>removeFromCart(itemId)</code></td>
+      <td>Removes an item completely using <code>cart = cart.filter(item =&gt; item.id !== itemId)</code>.</td>
+    </tr>
+    <tr>
+      <td><code>clearCart()</code></td>
+      <td>Prompts user with <code>confirm()</code>, resets <code>cart = []</code>, and updates UI.</td>
+    </tr>
+    <tr>
+      <td><code>updateCartDisplay()</code></td>
+      <td>Calculates bill: loops through <code>cart</code>, calculates <code>item.price * item.quantity</code>, computes <code>subtotal</code>, <code>tax = subtotal * 0.05</code> (5% GST), and <code>grandTotal = subtotal + tax</code>. Updates DOM with <code>.toFixed(2)</code>. Disables checkout button if cart is empty.</td>
+    </tr>
+    <tr>
+      <td><code>placeOrder()</code></td>
+      <td>Generates random Order ID (<code>CC-XXXXX</code>) and Token (<code>#T-XXX</code>) using <code>Math.random()</code>. Records order into <code>pastOrders</code>, clears <code>cart</code>, saves to LocalStorage, and opens <code>#orderModal</code>.</td>
+    </tr>
+    <tr>
+      <td><code>saveCartToStorage()</code></td>
+      <td>Serializes cart to string using <code>JSON.stringify(cart)</code> and writes to <code>localStorage.setItem('campusCafeCart', ...)</code>.</td>
+    </tr>
+    <tr>
+      <td><code>loadCartFromStorage()</code></td>
+      <td>Reads string with <code>localStorage.getItem('campusCafeCart')</code> and deserializes it back to an array using <code>JSON.parse()</code>.</td>
+    </tr>
+    <tr>
+      <td><code>renderPastOrders()</code></td>
+      <td>Iterates over <code>pastOrders</code> array and renders previous order receipts inside the past orders modal.</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2>3. Core Technical Concepts You Must Know</h2>
+
+  <h3>1. What is DOM Manipulation?</h3>
+  <p>
+    The <strong>DOM (Document Object Model)</strong> is the browser's in-memory tree representation of the webpage. 
+    Instead of hardcoding 13 food cards in HTML, JavaScript reads our <code>menuItems</code> array and dynamically generates HTML elements using 
+    <code>document.createElement('div')</code>, sets its inner content using template literals, 
+    and inserts it onto the screen using <code>menuGrid.appendChild(card)</code>.
+  </p>
+
+  <h3>2. How does LocalStorage work?</h3>
+  <p>
+    <code>localStorage</code> is an HTML5 browser storage mechanism that stores key-value pairs permanently on the user's computer until cleared. 
+    Because LocalStorage can only store plain text strings, we use:
+  </p>
+  <ul>
+    <li><code>JSON.stringify(cart)</code>: Converts our JavaScript array of objects into a JSON text string before saving.</li>
+    <li><code>JSON.parse(savedData)</code>: Converts the saved JSON text string back into a live JavaScript array when the website opens.</li>
+  </ul>
+
+  <h3>3. How is the bill calculated automatically?</h3>
+<pre><code>let subtotal = 0;
+cart.forEach(function (item) {
+  subtotal += item.price * item.quantity; // Sum of price * quantity
+});
+const tax = subtotal * 0.05;              // 5% College Canteen GST
+const grandTotal = subtotal + tax;        // Final total amount
+// Display formatted with 2 decimal places:
+summaryGrandTotal.textContent = "₹" + grandTotal.toFixed(2);</code></pre>
+
+  <div class="page-break"></div>
+
+  <h2>4. 5-Minute Live Viva Demonstration Script</h2>
+
+  <div class="callout">
+    <strong>Step 1: Introduction (30 seconds)</strong><br>
+    <em>"Good morning, Professor. My Continuous Assessment project is 'Campus Cafe - Cafeteria Menu and Order System'. It is a lightweight, responsive web application built purely with HTML5, CSS3, and Vanilla JavaScript with zero external frameworks or backend."</em>
+  </div>
+
+  <div class="callout">
+    <strong>Step 2: Menu Browsing & Filtering Demo (1 minute)</strong><br>
+    <em>"On the homepage, students can browse 13 fresh cafeteria items. Notice our category filter tabs: clicking 'Snacks' filters exclusively for sandwiches, burgers, and rolls. Clicking 'Drinks' shows our beverages. We also have real-time live search: if I type 'dosa' or 'coffee', the menu filters instantly on every keystroke without reloading the page."</em>
+  </div>
+
+  <div class="callout">
+    <strong>Step 3: Cart Tray & Automatic Bill Calculation (1 minute)</strong><br>
+    <em>"When I click '+ Add to Tray', the food tray on the right updates dynamically. I can increase quantity with '+', decrease with '-', or delete items. Notice the automatic bill calculation: it dynamically computes the subtotal, adds a 5% canteen GST, and displays the grand total formatted to 2 decimal places using JavaScript's .toFixed(2)."</em>
+  </div>
+
+  <div class="callout">
+    <strong>Step 4: LocalStorage Proof (30 seconds)</strong><br>
+    <em>"One key requirement was data persistence without a database. If I refresh the web page right now, all items in my tray remain intact! This is powered by HTML5 LocalStorage, where our JavaScript array is serialized with JSON.stringify() and restored with JSON.parse()."</em>
+  </div>
+
+  <div class="callout">
+    <strong>Step 5: Order Placement & Past Orders (1 minute)</strong><br>
+    <em>"When I click 'Place Canteen Order', the system simulates order placement by generating a unique Order Reference (e.g., CC-58219) and a Pickup Counter Token (e.g., #T-104) with an estimated preparation time of 10-15 minutes. It clears the tray and saves the receipt. At any time, clicking the 'Orders' button in the navbar opens the student's past orders history stored in LocalStorage."</em>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>5. 25 Expected Faculty Viva Questions & Model Answers</h2>
+
+  <div class="qa-box">
+    <div class="qa-question">Q1: Why did you choose Vanilla JavaScript instead of React or Vue?</div>
+    <div class="qa-answer">"Because this is an academic Continuous Assessment project aimed at mastering fundamental web development principles. Frameworks introduce heavy dependencies and build tooling; writing Vanilla JavaScript demonstrates a solid grasp of core DOM manipulation, event handling, and modern ES6 array methods."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q2: What is the difference between let and const?</div>
+    <div class="qa-answer">"<code>const</code> is used for variables whose identifier cannot be reassigned, such as DOM references (<code>const menuGrid</code>) and our master <code>menuItems</code> database. <code>let</code> is block-scoped and allows reassignment, which we use for dynamic state like <code>cart</code> and accumulators like <code>subtotal</code>."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q3: How does the live search work on every keystroke?</div>
+    <div class="qa-answer">"We listen to the <code>input</code> event on <code>#searchInput</code>. Every time a character is typed, <code>applyFilters()</code> runs. It converts the input to lowercase and uses <code>.filter()</code> to check if the food name or description includes the search query."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q4: What happens if a user clicks '+ Add to Tray' on an item that is already in the cart?</div>
+    <div class="qa-answer">"We use <code>cart.find(item =&gt; item.id === itemId)</code>. If the item is found, we do not add a duplicate card; instead, we increment its existing <code>quantity</code> property by 1 (<code>existingItem.quantity += 1</code>)."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q5: How does an item get removed when decreasing quantity?</div>
+    <div class="qa-answer">"Inside <code>decreaseQuantity(itemId)</code>, we check if <code>quantity &gt; 1</code>. If so, we decrement by 1. If quantity is currently 1 and the user clicks minus, we call <code>cart.splice(itemIndex, 1)</code> to remove that element from the array."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q6: What is the purpose of event.target.closest('.category-btn')?</div>
+    <div class="qa-answer">"It implements Event Delegation. Instead of adding separate event listeners to every tab button, we place one listener on the parent container (<code>#categoryTabs</code>). When clicked, <code>.closest()</code> finds the clicked button even if the student clicked on the emoji icon inside it."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q7: What is the difference between localStorage and cookies?</div>
+    <div class="qa-answer">"LocalStorage provides 5MB of storage per origin and data is never sent to the server with HTTP requests. Cookies are limited to 4KB and are automatically transmitted with every network request, which is unnecessary for purely client-side state."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q8: Why do we use .toFixed(2) on prices?</div>
+    <div class="qa-answer">"Because JavaScript uses IEEE 754 floating-point math, which can produce numbers like 14.999999999996. <code>.toFixed(2)</code> rounds and formats the number into a clean string with exactly two decimal places, representing Rupees and Paise."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q9: How do you prevent a student from placing an empty order?</div>
+    <div class="qa-answer">"In <code>updateCartDisplay()</code>, if <code>cart.length === 0</code>, we set <code>placeOrderBtn.disabled = true</code>. Additionally, inside <code>placeOrder()</code>, we have an explicit guard condition: <code>if (cart.length === 0) return;</code>."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q10: What is CSS Grid and why did you use it for the menu cards?</div>
+    <div class="qa-answer">"CSS Grid is a two-dimensional layout system. We used <code>grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))</code>. This automatically calculates how many 260px cards fit across the available width and stretches them proportionally, creating a responsive grid without manual media queries for each card."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q11: Why are vector SVG images used instead of standard heavy JPGs?</div>
+    <div class="qa-answer">"SVGs are XML-based vector graphics. They are extremely lightweight (~1.3 KB each), look sharp on any screen resolution, load instantaneously, and work 100% offline without relying on external image CDNs."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q12: What does document.addEventListener('DOMContentLoaded', ...) do?</div>
+    <div class="qa-answer">"It ensures our JavaScript code does not execute until the browser has fully downloaded and parsed the HTML DOM structure, preventing errors where script attempts to access elements that don't exist yet."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q13: How does the Order Reference Number get generated?</div>
+    <div class="qa-answer">"Using <code>'CC-' + Math.floor(10000 + Math.random() * 90000)</code>. This generates a pseudo-random 5-digit number between 10000 and 99999 prefixed with 'CC-'."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q14: How does the Past Orders history work?</div>
+    <div class="qa-answer">"Whenever an order is confirmed, we construct an order record object with the timestamp, token, order ID, items summary, and total amount paid. We <code>unshift()</code> it to our <code>pastOrders</code> array and save it to LocalStorage under <code>campusCafeOrderHistory</code>."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-question">Q15: How is the website hosted and deployed?</div>
+    <div class="qa-answer">"It is hosted on GitHub Pages directly from our repository branch <code>main</code>. Because all file paths are relative and there are zero backend requirements, GitHub Pages serves the static assets immediately over secure HTTPS."</div>
+  </div>
+
+</body>
+</html>
