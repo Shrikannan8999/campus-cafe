@@ -206,12 +206,17 @@ function displayMenu(items) {
 
   // If no items match, display the helpful empty message
   if (items.length === 0) {
-    noItemsMessage.style.display = "block";
+    noItemsMessage.removeAttribute("hidden");
+    noItemsMessage.style.setProperty("display", "block", "important");
+    noItemsMessage.classList.add("active");
     itemsCountText.textContent = "0 items found";
     return;
   }
 
-  noItemsMessage.style.display = "none";
+  // Ensure empty message is completely hidden
+  noItemsMessage.setAttribute("hidden", "");
+  noItemsMessage.style.setProperty("display", "none", "important");
+  noItemsMessage.classList.remove("active");
   itemsCountText.textContent = `Showing ${items.length} item${items.length > 1 ? "s" : ""}`;
 
   // Loop through each item using forEach()

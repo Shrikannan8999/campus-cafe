@@ -545,13 +545,18 @@ button {
   transform: scale(0.97);
 }
 
-/* No Items Message */
+/* No Items Message (Hidden by default, shown only when 0 items match) */
 .no-items-message {
+  display: none;
   text-align: center;
   background-color: #FFFFFF;
   padding: 50px 20px;
   border-radius: var(--radius-md);
   border: 1.5px dashed var(--coffee-border);
+}
+
+.no-items-message.active {
+  display: block;
 }
 
 .no-items-icon {
