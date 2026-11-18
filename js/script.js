@@ -19,176 +19,205 @@ const menuItems = [
   // --- SNACKS CATEGORY ---
   {
     id: 1,
-    name: "Veg Sandwich",
+    name: "Classic Veg Burger",
     category: "snacks",
-    price: 45,
-    description: "Toasted bread layered with fresh cucumber, ripe tomato, boiled potato, and mint chutney.",
-    image: "images/sandwich.svg"
+    price: 80,
+    tag: "CAMPUS FAVOURITE",
+    description: "A crisp vegetable patty, greens and house sauce.",
+    image: "images/burger.jpg"
   },
   {
     id: 2,
-    name: "Cheese Burger",
+    name: "Margherita Pizza",
     category: "snacks",
-    price: 70,
-    description: "Crispy vegetable patty topped with melted cheese, lettuce, and creamy cafeteria sauce.",
-    image: "images/burger.svg"
+    price: 110,
+    tag: "SNACKS",
+    description: "A classic with tomato, basil and melted cheese.",
+    image: "images/pizza.jpg"
   },
   {
     id: 3,
-    name: "French Fries",
+    name: "Veg Sandwich",
     category: "snacks",
-    price: 50,
-    description: "Golden crispy fried potatoes lightly salted and sprinkled with peri-peri herbs.",
-    image: "images/fries.svg"
+    price: 45,
+    tag: "ARTISAN BREAD",
+    description: "Toasted bread layered with fresh cucumber, ripe tomato, boiled potato, and mint chutney.",
+    image: "images/sandwich.jpg"
   },
   {
     id: 4,
-    name: "Samosa",
+    name: "French Fries",
     category: "snacks",
-    price: 20,
-    description: "Crispy golden triangle pastry stuffed with aromatic spiced potatoes and green peas.",
-    image: "images/samosa.svg"
+    price: 50,
+    tag: "CRISPY SIDES",
+    description: "Golden crispy fried potatoes lightly salted and sprinkled with peri-peri herbs.",
+    image: "images/fries.jpg"
   },
   {
     id: 5,
+    name: "Samosa",
+    category: "snacks",
+    price: 20,
+    tag: "TRADITIONAL",
+    description: "Crispy golden triangle pastry stuffed with aromatic spiced potatoes and green peas.",
+    image: "images/samosa.jpg"
+  },
+  {
+    id: 6,
     name: "Veg Roll",
     category: "snacks",
     price: 40,
+    tag: "STREET BITE",
     description: "Soft flatbread wrap filled with stir-fried cabbage, carrots, bell peppers, and chili sauce.",
-    image: "images/roll.svg"
+    image: "images/roll.jpg"
+  },
+  {
+    id: 7,
+    name: "Paneer Tikka Roll",
+    category: "snacks",
+    price: 65,
+    tag: "TANDOORI",
+    description: "Flaky paratha roll stuffed with spiced grilled paneer cubes, crunchy sliced onions, and tangy mint mayo.",
+    image: "images/paneer-roll.jpg"
+  },
+  {
+    id: 8,
+    name: "Veg Cutlet",
+    category: "snacks",
+    price: 35,
+    tag: "SAVORY CRUNCH",
+    description: "Crispy spiced vegetable croquette served golden-brown with green coriander chutney and tomato dip.",
+    image: "images/cutlet.jpg"
+  },
+  {
+    id: 9,
+    name: "Cheese Garlic Bread",
+    category: "snacks",
+    price: 60,
+    tag: "BAKERY",
+    description: "Toasted artisan bread brushed with rich garlic herb butter and topped with bubbling mozzarella cheese.",
+    image: "images/garlic-bread.jpg"
   },
 
   // --- MEALS CATEGORY ---
   {
-    id: 6,
+    id: 10,
+    name: "Schezwan Noodles",
+    category: "meals",
+    price: 105,
+    tag: "CHINESE",
+    description: "Spicy noodles tossed with peppers and Schezwan sauce.",
+    image: "images/noodles.jpg"
+  },
+  {
+    id: 11,
     name: "Masala Dosa",
     category: "meals",
     price: 60,
-    description: "Crispy golden fermented crepe stuffed with spiced potato masala, served with sambar.",
-    image: "images/dosa.svg"
+    tag: "SOUTH INDIAN",
+    description: "Crispy golden fermented crepe stuffed with spiced potato masala, served with sambar and coconut dip.",
+    image: "images/dosa.jpg"
   },
   {
-    id: 7,
+    id: 12,
     name: "Veg Fried Rice",
     category: "meals",
     price: 90,
-    description: "Wok-tossed basmati rice with crunchy carrots, green peas, sweet corn, and soy seasoning.",
-    image: "images/rice.svg"
+    tag: "WOK SPECIAL",
+    description: "Wok-tossed basmati rice with crunchy carrots, green peas, sweet corn, and savory soy seasoning.",
+    image: "images/rice.jpg"
   },
   {
-    id: 8,
-    name: "Veg Noodles",
-    category: "meals",
-    price: 85,
-    description: "Classic Chinese-style Hakka noodles tossed with spring onions, capsicum, and garlic.",
-    image: "images/noodles.svg"
-  },
-  {
-    id: 9,
+    id: 13,
     name: "Mini Meals",
     category: "meals",
     price: 100,
+    tag: "THALI PLATTER",
     description: "Student wholesome platter: 2 warm rotis, paneer curry, dal tadka, steamed rice, and salad.",
-    image: "images/mini-meal.svg"
+    image: "images/mini-meal.jpg"
+  },
+  {
+    id: 14,
+    name: "Chole Bhature",
+    category: "meals",
+    price: 80,
+    tag: "NORTH INDIAN",
+    description: "Puffy golden fried bhatura paired with slow-cooked spicy chickpea masala, pickled carrots, and onions.",
+    image: "images/chole-bhature.jpg"
+  },
+  {
+    id: 15,
+    name: "Paneer Butter Masala",
+    category: "meals",
+    price: 110,
+    tag: "CHEF SPECIAL",
+    description: "Rich cottage cheese cubes simmered in velvety tomato makhani gravy, served with 2 flaky Malabar parottas.",
+    image: "images/paneer-butter-masala.jpg"
+  },
+  {
+    id: 16,
+    name: "Curd Rice",
+    category: "meals",
+    price: 50,
+    tag: "COMFORT FOOD",
+    description: "Cooling seasoned yogurt rice tempered with mustard seeds, curry leaves, ginger, and crunchy pomegranate.",
+    image: "images/curd-rice.jpg"
   },
 
   // --- DRINKS CATEGORY ---
   {
-    id: 10,
+    id: 17,
     name: "Tea",
     category: "drinks",
     price: 15,
+    tag: "HOT BREW",
     description: "Freshly brewed hot milk tea infused with crushed ginger and aromatic green cardamom.",
-    image: "images/tea.svg"
-  },
-  {
-    id: 11,
-    name: "Coffee",
-    category: "drinks",
-    price: 25,
-    description: "Hot, frothy traditional filter coffee brewed with dark roasted coffee beans.",
-    image: "images/coffee.svg"
-  },
-  {
-    id: 12,
-    name: "Cold Coffee",
-    category: "drinks",
-    price: 55,
-    description: "Chilled blended coffee served with chocolate drizzle and creamy milk froth.",
-    image: "images/cold-coffee.svg"
-  },
-  {
-    id: 13,
-    name: "Fresh Lime",
-    category: "drinks",
-    price: 30,
-    description: "Cooling sweet and salty sparkling cooler made with freshly squeezed lemon juice and mint.",
-    image: "images/lime.svg"
-  },
-  // --- NEW ADDITIONS ---
-  {
-    id: 14,
-    name: "Paneer Tikka Roll",
-    category: "snacks",
-    price: 65,
-    description: "Flaky paratha roll stuffed with spiced grilled paneer cubes, crunchy sliced onions, and tangy mint mayo.",
-    image: "images/paneer-roll.svg"
-  },
-  {
-    id: 15,
-    name: "Veg Cutlet",
-    category: "snacks",
-    price: 35,
-    description: "Crispy spiced vegetable croquette served golden-brown with green coriander chutney and tomato dip.",
-    image: "images/cutlet.svg"
-  },
-  {
-    id: 16,
-    name: "Cheese Garlic Bread",
-    category: "snacks",
-    price: 60,
-    description: "Toasted artisan bread brushed with rich garlic herb butter and topped with bubbling mozzarella cheese.",
-    image: "images/garlic-bread.svg"
-  },
-  {
-    id: 17,
-    name: "Chole Bhature",
-    category: "meals",
-    price: 80,
-    description: "Puffy golden fried bhatura paired with slow-cooked spicy chickpea masala, pickled carrots, and onions.",
-    image: "images/chole-bhature.svg"
+    image: "images/tea.jpg"
   },
   {
     id: 18,
-    name: "Paneer Butter Masala",
-    category: "meals",
-    price: 110,
-    description: "Rich cottage cheese cubes simmered in velvety tomato makhani gravy, served with 2 flaky Malabar parottas.",
-    image: "images/paneer-butter-masala.svg"
+    name: "Coffee",
+    category: "drinks",
+    price: 25,
+    tag: "FILTER COFFEE",
+    description: "Hot, frothy traditional filter coffee brewed with dark roasted coffee beans.",
+    image: "images/coffee.jpg"
   },
   {
     id: 19,
-    name: "Curd Rice",
-    category: "meals",
-    price: 50,
-    description: "Cooling seasoned yogurt rice tempered with mustard seeds, curry leaves, ginger, and crunchy pomegranate.",
-    image: "images/curd-rice.svg"
+    name: "Cold Coffee",
+    category: "drinks",
+    price: 55,
+    tag: "CHILLED",
+    description: "Chilled blended coffee served with chocolate drizzle and creamy milk froth.",
+    image: "images/cold-coffee.jpg"
   },
   {
     id: 20,
-    name: "Mango Lassi",
+    name: "Fresh Lime",
     category: "drinks",
-    price: 45,
-    description: "Creamy, refreshing sweet yogurt smoothie blended with ripe Alphonso mango pulp and cardamom.",
-    image: "images/mango-lassi.svg"
+    price: 30,
+    tag: "REFRESHER",
+    description: "Cooling sweet and salty sparkling cooler made with freshly squeezed lemon juice and mint.",
+    image: "images/lime.jpg"
   },
   {
     id: 21,
+    name: "Mango Lassi",
+    category: "drinks",
+    price: 45,
+    tag: "SUMMER SPECIAL",
+    description: "Creamy, refreshing sweet yogurt smoothie blended with ripe Alphonso mango pulp and cardamom.",
+    image: "images/mango-lassi.jpg"
+  },
+  {
+    id: 22,
     name: "Badam Milk",
     category: "drinks",
     price: 35,
+    tag: "NOURISHING",
     description: "Warm, nourishing milk brewed with crushed California almonds, saffron strands, and fragrant spices.",
-    image: "images/badam-milk.svg"
+    image: "images/badam-milk.jpg"
   }
 ];
 
@@ -420,7 +449,7 @@ function displayMenu(items) {
     const card = document.createElement("div");
     card.className = "food-card";
 
-    // Set card HTML content
+    // Set card HTML content matching dark bistro photo layout
     card.innerHTML = `
       <div class="food-card-img-wrap">
         <img 
@@ -429,15 +458,18 @@ function displayMenu(items) {
           class="food-card-img" 
           loading="lazy"
         />
-        <span class="food-category-tag">${item.category}</span>
+        <span class="food-badge">VEGETARIAN</span>
       </div>
       <div class="food-card-body">
-        <h4 class="food-card-title">${item.name}</h4>
+        <div class="food-card-header">
+          <h4 class="food-card-title">${item.name}</h4>
+          <span class="food-price">₹${item.price}</span>
+        </div>
         <p class="food-card-desc">${item.description}</p>
         <div class="food-card-footer">
-          <span class="food-price">₹${item.price}</span>
+          <span class="food-tag">${item.tag || item.category.toUpperCase()}</span>
           <button class="btn-add-cart" onclick="addToCart(${item.id})">
-            + Add to Tray
+            + ADD TO ORDER
           </button>
         </div>
       </div>

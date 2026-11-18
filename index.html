@@ -3,43 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CAMPUS CAFÉ – Cafeteria Menu and Order System</title>
+  <title>CAMPUSBITE – The Campus Dining Experience</title>
   
   <!-- Relative CSS link for static hosting and Netlify deployment -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Clean web font for student-friendly typography -->
+  <!-- Editorial Serif and Modern Sans typography matching design -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- =========================================================================
-       NAVIGATION BAR
-       Includes logo, quick links, search shortcut, and live cart counter badge.
+       NAVIGATION BAR (Dark Luxury Bistro Theme)
        ========================================================================= -->
   <header class="navbar">
     <div class="nav-container">
       
-      <!-- Brand Logo & Name -->
+      <!-- Brand Logo & Name (matching Screenshot 1) -->
       <a href="#home" class="nav-brand">
-        <span class="brand-icon">☕</span>
-        <div class="brand-text">
-          <span class="brand-title">CAMPUS CAFÉ</span>
-          <span class="brand-subtitle">Cafeteria Menu & Order System</span>
-        </div>
+        <span class="brand-title">CAMPUS<span class="brand-accent">BITE</span></span>
       </a>
 
-      <!-- Navigation Links -->
+      <!-- Navigation Links (matching Screenshot 1) -->
       <nav class="nav-links">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#cart" class="nav-link">Cart</a>
-        <a href="#about" class="nav-link">About</a>
+        <a href="#home" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">OUR STORY</a>
+        <a href="#menu" class="nav-link">MENU</a>
+        <a href="#cart" class="nav-link">SELECTION</a>
+        <a href="#about" class="nav-link">CONTACT</a>
       </nav>
 
-      <!-- Cart Button in Header with dynamic item counter -->
+      <!-- Cart Button & Controls in Header -->
       <div class="nav-actions">
         <!-- Student Profile Button -->
         <button class="nav-student-btn" id="openStudentBtn" title="Student Profile & ID">
@@ -53,11 +49,13 @@
         </button>
 
         <!-- Cart Button in Header with dynamic item counter -->
-        <a href="#cart" class="nav-cart-btn" id="headerCartBtn">
+        <a href="#cart" class="nav-cart-btn" id="headerCartBtn" title="View Food Tray">
           <span class="cart-icon">🛒</span>
-          <span class="cart-label">Food Tray</span>
           <span class="cart-badge" id="cartCountBadge">0</span>
         </a>
+
+        <!-- Order Now Button (Solid gold matching Screenshot 1) -->
+        <a href="#menu" class="btn-order-now">ORDER NOW</a>
       </div>
 
     </div>
@@ -65,63 +63,65 @@
 
 
   <!-- =========================================================================
-       SECTION A: HOME / HERO SECTION
-       Friendly welcome, introduction, CTA buttons, and cafe visual.
+       HERO SECTION (Exact Replica of Screenshot 1)
        ========================================================================= -->
   <section class="hero-section" id="home">
     <div class="hero-container">
       
       <div class="hero-text">
-        <span class="student-badge">🎓 College Cafeteria Portal</span>
-        <h1 class="hero-title">Fresh, Fast & Affordable Meals for Students</h1>
+        <span class="hero-kicker">THE CAMPUS DINING EXPERIENCE</span>
+        <h1 class="hero-title">A little more<br><span class="hero-title-accent">than a meal.</span></h1>
         <p class="hero-description">
-          Welcome to <strong>Campus Café</strong>! Skip the rush between lectures, explore today's fresh snacks, 
-          budget-friendly meals, and cooling beverages, and calculate your total before ordering at Counter #1.
+          Thoughtfully prepared favourites, familiar comforts and something worth looking forward to — right here on campus.
         </p>
         <div class="hero-buttons">
-          <a href="#menu" class="btn btn-primary">🍽️ Explore Menu</a>
-          <a href="#cart" class="btn btn-secondary">🛒 View Food Tray</a>
+          <a href="#menu" class="btn-hero-primary">EXPLORE THE MENU ↗</a>
+          <a href="#menu" class="btn-hero-secondary">Discover our selection</a>
         </div>
         
-        <!-- Quick Highlight Badges -->
-        <div class="hero-highlights">
-          <div class="highlight-item">
-            <span class="highlight-icon">⚡</span>
-            <span>Fast Counter Pickup</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-icon">💰</span>
-            <span>Student Budget Prices</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-icon">🌿</span>
-            <span>Freshly Prepared</span>
-          </div>
+        <div class="hero-subkicker">
+          <span class="subkicker-line"></span> FRESHLY PREPARED • MADE FOR CAMPUS LIFE
         </div>
       </div>
 
       <div class="hero-visual">
-        <img 
-          src="images/hero-cafe.svg" 
-          alt="Campus Cafe Order Counter Illustration" 
-          class="hero-image"
-        />
+        <div class="hero-image-frame">
+          <img 
+            src="images/hero-cafe.jpg" 
+            alt="Campus Dining Platter Experience" 
+            class="hero-image"
+          />
+          <div class="hero-image-caption">
+            <span>01 / THE DAILY EDIT</span>
+            <span>GOOD FOOD, GOOD DAYS.</span>
+          </div>
+        </div>
       </div>
 
+    </div>
+
+    <!-- Ticker Bar at bottom of Hero (matching Screenshot 1) -->
+    <div class="brand-ticker-bar">
+      <div class="ticker-content">
+        <div class="ticker-item">GOOD FOOD SHOULD NEVER FEEL ORDINARY.</div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item">YOUR CAMPUS. YOUR TABLE.</div>
+      </div>
     </div>
   </section>
 
 
   <!-- =========================================================================
-       SECTION B: MENU SECTION
-       Category filters (Snacks, Meals, Drinks), live search, and dynamic food cards.
+       MENU SECTION (Exact Replica of Screenshot 2)
+       Category filters, live search, and food cards with real photography.
        ========================================================================= -->
   <section class="menu-section" id="menu">
     <div class="section-container">
       
       <div class="section-title-wrap">
+        <span class="section-kicker">OUR CURATED SELECTION</span>
         <h2 class="section-title">Cafeteria Menu</h2>
-        <p class="section-subtitle">Select a category or search your favorite dishes</p>
+        <p class="section-subtitle">Crafted with fresh ingredients, balanced flavors, and student favorites</p>
       </div>
 
       <!-- Controls: Category Filter Tabs & Live Search -->
@@ -130,16 +130,16 @@
         <!-- Category Filter Buttons -->
         <div class="category-tabs" id="categoryTabs">
           <button class="category-btn active" data-category="all">
-            <span class="tab-icon">🍽️</span> All Items
+            All Items
           </button>
           <button class="category-btn" data-category="snacks">
-            <span class="tab-icon">🥪</span> Snacks
+            Snacks
           </button>
           <button class="category-btn" data-category="meals">
-            <span class="tab-icon">🍛</span> Meals
+            Meals
           </button>
           <button class="category-btn" data-category="drinks">
-            <span class="tab-icon">🥤</span> Drinks
+            Drinks
           </button>
         </div>
 
@@ -159,7 +159,7 @@
       <!-- Live Items Status Header -->
       <div class="menu-status-bar">
         <h3 id="currentCategoryTitle">All Items</h3>
-        <span class="items-count-badge" id="itemsCountText">Showing 21 items</span>
+        <span class="items-count-badge" id="itemsCountText">Showing 22 items</span>
       </div>
 
       <!-- Dynamic Food Cards Grid (Populated by JavaScript) -->
@@ -171,7 +171,7 @@
       <div class="no-items-message" id="noItemsMessage" hidden style="display: none !important;">
         <div class="no-items-icon">🍽️</div>
         <h3>No matching food items found</h3>
-        <p>Try searching for another dish like "burger", "dosa", or "coffee".</p>
+        <p>Try searching for another dish like "burger", "pizza", "noodles", or "coffee".</p>
         <button class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
       </div>
 
@@ -180,14 +180,14 @@
 
 
   <!-- =========================================================================
-       SECTIONS C & D: SHOPPING CART & ORDER SUMMARY
-       Displays selected items, quantity controls, subtotal, and total amount.
+       SHOPPING CART & ORDER SUMMARY
        ========================================================================= -->
   <section class="cart-section" id="cart">
     <div class="section-container">
       
       <div class="section-title-wrap">
-        <h2 class="section-title">Your Food Tray & Order Summary</h2>
+        <span class="section-kicker">ORDER MANAGEMENT</span>
+        <h2 class="section-title">Your Food Tray & Bill Summary</h2>
         <p class="section-subtitle">Review your selected items, adjust quantities, and calculate your bill</p>
       </div>
 
@@ -250,15 +250,168 @@
 
 
   <!-- =========================================================================
-       SECTION E: ORDER CONFIRMATION MODAL / POPUP
-       Displays order reference number, items, total, and clears cart upon confirmation.
+       SECTION: OUR STORY / ABOUT
+       ========================================================================= -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      
+      <div class="section-title-wrap">
+        <span class="section-kicker">OUR PHILOSOPHY</span>
+        <h2 class="section-title">The Campus Dining Story</h2>
+        <p class="section-subtitle">Elevating every bite between lectures, labs, and study sessions</p>
+      </div>
+
+      <div class="about-grid">
+        
+        <div class="about-card">
+          <div class="about-card-icon">🏫</div>
+          <h3>What is CampusBite?</h3>
+          <p>
+            CampusBite is a student-centered digital cafeteria menu and ordering portal. 
+            It gives college students a quick, transparent, and refined way to 
+            browse available food, check exact menu prices, and calculate meal expenses effortlessly.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">💡</div>
+          <h3>Why Was It Developed?</h3>
+          <p>
+            During busy recess and lunch breaks, college canteens face severe rush and long queues. 
+            CampusBite enables students to pre-calculate their orders and pick up meals swiftly at Counter #1.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-card-icon">⚡</div>
+          <h3>How Does It Work?</h3>
+          <p>
+            Browse daily culinary items, add your favorite dishes to your food tray, and preview an instant automatic 
+            bill calculation. Receive a counter pickup token to collect your hot meal quickly at Counter #1.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>CAMPUS<span class="brand-accent">BITE</span></h4>
+        <p>Freshly Prepared • Made for Campus Life</p>
+      </div>
+
+      <div class="footer-info">
+        <p>Fresh, Fast & Curated Meals for College Students</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CampusBite. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       PAYMENT PORTAL MODAL (Dark Luxury Theme)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="paymentModal">
+    <div class="modal-box modal-wide">
+      <div class="payment-modal-header">
+        <h2 class="modal-title">💳 Complete Payment</h2>
+        <div class="payment-amount-badge" id="paymentPayableAmount">₹0.00</div>
+      </div>
+      <p class="modal-subtitle">Choose your preferred payment method to generate your order token</p>
+
+      <!-- Payment Method Tabs -->
+      <div class="payment-methods-grid">
+        <button class="payment-method-card active" data-method="upi">
+          <span class="pay-icon">📱</span>
+          <strong>UPI / QR Code</strong>
+          <span class="pay-tag">Google Pay • PhonePe</span>
+        </button>
+        <button class="payment-method-card" data-method="card">
+          <span class="pay-icon">🪪</span>
+          <strong>Campus Smart Card</strong>
+          <span class="pay-tag" id="smartCardBalanceTag">Balance: ₹500.00</span>
+        </button>
+        <button class="payment-method-card" data-method="cash">
+          <span class="pay-icon">💵</span>
+          <strong>Cash on Pickup</strong>
+          <span class="pay-tag">Pay at Counter #1</span>
+        </button>
+      </div>
+
+      <!-- Payment Method Dynamic Views -->
+      <div class="payment-method-view" id="upiPaymentView">
+        <div class="qr-scanner-card">
+          <div class="qr-scanner-frame">
+            <img 
+              src="images/upi-qr.png" 
+              alt="Campus Cafe UPI Payment Scanner" 
+              class="upi-qr-image"
+              id="upiQrScannerImg"
+            />
+          </div>
+          <p class="qr-instruction">Scan with Google Pay, PhonePe, Paytm, or BHIM</p>
+          <div class="upi-id-box">
+            <span>UPI ID: <strong>campuscafe@upi</strong></span>
+          </div>
+        </div>
+        <div class="form-group-pay">
+          <label for="upiRefInput">UPI Transaction / UTR No. (Optional):</label>
+          <input type="text" id="upiRefInput" placeholder="e.g. 482910394821" maxlength="20">
+        </div>
+      </div>
+
+      <div class="payment-method-view" id="cardPaymentView" style="display: none;">
+        <div class="student-card-visual">
+          <div class="smart-card-chip">💳</div>
+          <div class="smart-card-header">CAMPUS CAFETERIA SMART CARD</div>
+          <div class="smart-card-name" id="smartCardStudentName">Shrikannan</div>
+          <div class="smart-card-id" id="smartCardStudentId">Roll No: SK-8999</div>
+          <div class="smart-card-balance-box">
+            <span>Available Balance:</span>
+            <strong id="smartCardDisplayBalance">₹500.00</strong>
+          </div>
+        </div>
+        <p class="card-instruction">The bill amount will be deducted directly from your campus card balance.</p>
+      </div>
+
+      <div class="payment-method-view" id="cashPaymentView" style="display: none;">
+        <div class="cash-card-visual">
+          <span class="cash-big-icon">💵</span>
+          <h4>Pay Cash at Counter #1</h4>
+          <p>Your order will be sent to the kitchen immediately. Please hand over the exact cash at Counter #1 when collecting your food tray.</p>
+        </div>
+      </div>
+
+      <!-- Payment Actions -->
+      <div class="payment-actions">
+        <button class="btn btn-secondary" id="cancelPaymentBtn">Cancel</button>
+        <button class="btn btn-primary" id="confirmPaymentBtn">
+          <span>Confirm & Pay</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       ORDER CONFIRMATION MODAL / POPUP
        ========================================================================= -->
   <div class="modal-backdrop" id="orderModal">
     <div class="modal-box">
       
       <div class="modal-header-icon">🎉</div>
       <h2 class="modal-title">Order Placed Successfully!</h2>
-      <p class="modal-subtitle">Your order has been registered at Campus Café.</p>
+      <p class="modal-subtitle">Your order has been registered at CampusBite.</p>
 
       <div class="order-receipt-card">
         
@@ -312,7 +465,6 @@
 
   <!-- =========================================================================
        PAST ORDERS HISTORY MODAL
-       Displays your previous orders stored in browser LocalStorage.
        ========================================================================= -->
   <div class="modal-backdrop" id="pastOrdersModal">
     <div class="modal-box modal-wide">
@@ -336,167 +488,7 @@
 
 
   <!-- =========================================================================
-       SECTION F: ABOUT SECTION
-       Explaining the Campus Café project, purpose, and student benefits.
-       ========================================================================= -->
-  <section class="about-section" id="about">
-    <div class="section-container">
-      
-      <div class="section-title-wrap">
-        <h2 class="section-title">About Campus Café</h2>
-        <p class="section-subtitle">Your Friendly Campus Food Hub</p>
-      </div>
-
-      <div class="about-grid">
-        
-        <div class="about-card">
-          <div class="about-card-icon">🏫</div>
-          <h3>What is Campus Café?</h3>
-          <p>
-            Campus Café is a student-centered digital cafeteria menu and ordering prototype. 
-            It is designed to give college students a quick, transparent, and enjoyable way to 
-            browse available food, check exact menu prices, and calculate their food expenses.
-          </p>
-        </div>
-
-        <div class="about-card">
-          <div class="about-card-icon">💡</div>
-          <h3>Why Was It Developed?</h3>
-          <p>
-            During busy recess and lunch breaks, college canteens face severe rush and long queues. 
-            Campus Café enables students to easily help students 
-            pre-calculate their order and streamline cafeteria counters.
-          </p>
-        </div>
-
-        <div class="about-card">
-          <div class="about-card-icon">⚡</div>
-          <h3>How Does It Work?</h3>
-          <p>
-            Browse daily menu items, add your favorite dishes to your food tray, and preview an instant automatic 
-            bill calculation. Receive a counter pickup token to collect your hot meal quickly at Counter #1.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================================================================
-       SECTION G: FOOTER
-       Branding, project description, and student copyright.
-       ========================================================================= -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <span class="footer-icon">☕</span>
-        <h4>CAMPUS CAFÉ</h4>
-        <p>College Cafeteria Menu & Order System</p>
-      </div>
-
-      <div class="footer-info">
-        <p>Fresh, Fast & Affordable Meals for College Students</p>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 Campus Café. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- =========================================================================
-       PAYMENT PORTAL MODAL
-       Allows students to choose UPI QR scanner, Campus Smart Card, or Cash.
-       ========================================================================= -->
-  <div class="modal-backdrop" id="paymentModal">
-    <div class="modal-box modal-wide">
-      <div class="payment-modal-header">
-        <h2 class="modal-title">💳 Complete Payment</h2>
-        <div class="payment-amount-badge" id="paymentPayableAmount">₹0.00</div>
-      </div>
-      <p class="modal-subtitle">Choose your preferred payment method to generate your order token</p>
-
-      <!-- Payment Method Tabs -->
-      <div class="payment-methods-grid">
-        <button class="payment-method-card active" data-method="upi">
-          <span class="pay-icon">📱</span>
-          <strong>UPI / QR Code</strong>
-          <span class="pay-tag">Google Pay • PhonePe</span>
-        </button>
-        <button class="payment-method-card" data-method="card">
-          <span class="pay-icon">🪪</span>
-          <strong>Campus Smart Card</strong>
-          <span class="pay-tag" id="smartCardBalanceTag">Balance: ₹500.00</span>
-        </button>
-        <button class="payment-method-card" data-method="cash">
-          <span class="pay-icon">💵</span>
-          <strong>Cash on Pickup</strong>
-          <span class="pay-tag">Pay at Counter #1</span>
-        </button>
-      </div>
-
-      <!-- Payment Method Dynamic Views -->
-      <div class="payment-method-view" id="upiPaymentView">
-        <div class="qr-scanner-card">
-          <div class="qr-scanner-frame">
-            <img 
-              src="images/upi-qr.png" 
-              alt="Campus Cafe UPI Payment Scanner" 
-              class="upi-qr-image"
-              id="upiQrScannerImg"
-              
-            />
-          </div>
-          <p class="qr-instruction">Scan with Google Pay, PhonePe, Paytm, or BHIM</p>
-          <div class="upi-id-box">
-            <span>UPI ID: <strong>campuscafe@upi</strong></span>
-          </div>
-        </div>
-        <div class="form-group-pay">
-          <label for="upiRefInput">UPI Transaction / UTR No. (Optional):</label>
-          <input type="text" id="upiRefInput" placeholder="e.g. 482910394821" maxlength="20">
-        </div>
-      </div>
-
-      <div class="payment-method-view" id="cardPaymentView" style="display: none;">
-        <div class="student-card-visual">
-          <div class="smart-card-chip">💳</div>
-          <div class="smart-card-header">CAMPUS CAFETERIA SMART CARD</div>
-          <div class="smart-card-name" id="smartCardStudentName">Shrikannan</div>
-          <div class="smart-card-id" id="smartCardStudentId">Roll No: SK-8999</div>
-          <div class="smart-card-balance-box">
-            <span>Available Balance:</span>
-            <strong id="smartCardDisplayBalance">₹500.00</strong>
-          </div>
-        </div>
-        <p class="card-instruction">The bill amount will be deducted directly from your campus card balance.</p>
-      </div>
-
-      <div class="payment-method-view" id="cashPaymentView" style="display: none;">
-        <div class="cash-card-visual">
-          <span class="cash-big-icon">💵</span>
-          <h4>Pay Cash at Counter #1</h4>
-          <p>Your order will be sent to the kitchen immediately. Please hand over the exact cash at Counter #1 when collecting your food tray.</p>
-        </div>
-      </div>
-
-      <!-- Payment Actions -->
-      <div class="payment-actions">
-        <button class="btn btn-secondary" id="cancelPaymentBtn">Cancel</button>
-        <button class="btn btn-primary" id="confirmPaymentBtn">
-          <span>Confirm & Pay</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- =========================================================================
        STUDENT PROFILE & ACCOUNT MODAL
-       View and manage student profile details and canteen balance.
        ========================================================================= -->
   <div class="modal-backdrop" id="studentModal">
     <div class="modal-box">
