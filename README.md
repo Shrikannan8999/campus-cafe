@@ -106,35 +106,7 @@ Campus-Cafe/
 ├── README.md           # Project documentation and Netlify hosting guide
 └── VIVA_GUIDE.md       # Comprehensive Faculty Evaluation & Viva Q&A Guide
 ```
-
----
-
-## 8. How to Run the Website Locally
-No complex installation or build tools are required:
-
-1. Locate the **`Campus-Cafe`** folder on your computer.
-2. Double-click **`index.html`** or right-click and choose **"Open with Google Chrome"** (or Edge, Firefox, Brave, Safari).
-3. The website will load and work immediately!
-
----
-
-## 9. How to Deploy to Netlify (Free Live Link for Your Teacher)
-To give your teacher a live URL (e.g., `https://campus-cafe-student.netlify.app`), follow these simple steps using **Netlify Drop** (no terminal commands or accounts needed):
-
-1. Open your web browser and visit: **[https://app.netlify.com/drop](https://app.netlify.com/drop)**
-2. Drag and drop the entire **`Campus-Cafe`** folder directly into the designated drop area on the webpage.
-3. Netlify will deploy the site in 5 to 10 seconds and generate a live URL.
-4. *(Optional)* Click **"Site configuration" > "Change site name"** to set a custom link like `https://my-campus-cafe.netlify.app`.
-5. Copy the live link and email or submit it to your teacher!
-
-> **Why this works seamlessly on Netlify:**
-> - `index.html` is located directly in the root directory.
-> - All links to `css/style.css`, `js/script.js`, and `images/...` use clean relative paths.
-> - There are zero backend dependencies.
-
----
-
-## 10. How JavaScript Works in This Project
+## 8. How JavaScript Works in This Project
 1. **Data Source**: An array of 13 food objects (`menuItems`), each containing `id`, `name`, `category`, `price`, `description`, and `image`.
 2. **Rendering (`displayMenu`)**: Iterates through the array using `forEach()`, generates HTML markup for each card, and appends it to `#menuGrid`.
 3. **Filtering (`applyFilters`)**: Uses `Array.prototype.filter()` to test each item against the active category button and the text in the search input.
@@ -147,10 +119,10 @@ To give your teacher a live URL (e.g., `https://campus-cafe-student.netlify.app`
 
 ---
 
-## 11. Limitations
+## 9. Limitations
 - **Simulated Ordering**: Because this is a frontend-only continuous assessment project, order placement is simulated. Orders are not sent to an actual physical kitchen server.
 - **Client-Side Storage**: LocalStorage is unique to the student's browser device; data is not synchronized across different devices.
-- **Single Currency**: Prices are formatted in Indian Rupees (₹) as per college requirements.
+  
 
 ---
 
