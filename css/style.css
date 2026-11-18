@@ -1144,3 +1144,128 @@ button {
     width: 100%;
   }
 }
+
+
+/* ---------- PAST ORDERS MODAL & HISTORY STYLING ---------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-history-btn {
+  background-color: var(--bg-cream-soft);
+  color: var(--coffee-dark);
+  border: 1.5px solid var(--coffee-border);
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-history-btn:hover {
+  background-color: var(--orange-badge-bg);
+  border-color: var(--orange-primary);
+  color: var(--orange-primary);
+}
+
+.modal-wide {
+  max-width: 520px;
+}
+
+.past-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  border-bottom: 1.5px solid var(--bg-cream-soft);
+  padding-bottom: 10px;
+}
+
+.past-orders-list {
+  max-height: 360px;
+  overflow-y: auto;
+  margin-bottom: 18px;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.past-orders-list::-webkit-scrollbar {
+  width: 6px;
+}
+.past-orders-list::-webkit-scrollbar-thumb {
+  background-color: var(--coffee-border);
+  border-radius: 10px;
+}
+
+.past-order-card {
+  background-color: var(--bg-cream-soft);
+  border: 1px solid var(--coffee-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: left;
+}
+
+.past-order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--coffee-border);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.past-order-id {
+  font-weight: 700;
+  color: var(--coffee-dark);
+  font-size: 0.95rem;
+}
+
+.past-order-date {
+  font-size: 0.76rem;
+  color: var(--coffee-light);
+}
+
+.past-order-token {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange-primary);
+  background-color: var(--orange-badge-bg);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--orange-light);
+}
+
+.past-order-items {
+  font-size: 0.84rem;
+  color: var(--coffee-medium);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.past-order-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--coffee-dark);
+  border-top: 1px solid #EFE5D8;
+  padding-top: 6px;
+}
+
+.past-order-total strong {
+  color: var(--orange-primary);
+}
+
+.empty-history {
+  text-align: center;
+  padding: 35px 10px;
+  color: var(--coffee-light);
+}

@@ -135,6 +135,7 @@ let cart = [];
 
 // Tracks the currently selected category tab
 let selectedCategory = "all";
+let pastOrders = [];
 
 // =============================================================================
 // 3. DOM ELEMENT REFERENCES
@@ -164,6 +165,13 @@ const receiptTokenNumber = document.getElementById("receiptTokenNumber");
 const receiptItemCount = document.getElementById("receiptItemCount");
 const receiptTotalAmount = document.getElementById("receiptTotalAmount");
 
+// Past Orders Modal Elements
+const pastOrdersModal = document.getElementById("pastOrdersModal");
+const openPastOrdersBtn = document.getElementById("openPastOrdersBtn");
+const closePastOrdersBtn = document.getElementById("closePastOrdersBtn");
+const pastOrdersList = document.getElementById("pastOrdersList");
+const clearOrderHistoryBtn = document.getElementById("clearOrderHistoryBtn");
+
 // =============================================================================
 // 4. LOCALSTORAGE MANAGEMENT
 // Saves and retrieves cart data from the browser's storage.
@@ -179,6 +187,59 @@ function saveCartToStorage() {
 /**
  * Loads saved cart data from LocalStorage when the website opens.
  */
+function saveOrderHistory() {
+  localStorage.setItem("campusCafeOrderHistory", JSON.stringify(pastOrders));
+}
+
+function loadOrderHistory() {
+  const savedHistory = localStorage.getItem("campusCafeOrderHistory");
+  if (savedHistory) {
+    try {
+      pastOrders = JSON.parse(savedHistory);
+    } catch (error) {
+      console.error("Could not parse saved past orders:", error);
+      pastOrders = [];
+    }
+  }
+}
+
+function renderPastOrders() {
+  pastOrdersList.innerHTML = "";
+
+  if (pastOrders.length === 0) {
+    pastOrdersList.innerHTML = `
+      <div class="empty-history">
+        <div style="font-size: 2.8rem; margin-bottom: 8px;">🍽️</div>
+        <h4>No past orders yet</h4>
+        <p style="font-size: 0.85rem; color: var(--coffee-light);">Your completed food orders will be saved here.</p>
+      </div>
+    `;
+    return;
+  }
+
+  pastOrders.forEach(function (order) {
+    const card = document.createElement("div");
+    card.className = "past-order-card";
+    card.innerHTML = `
+      <div class="past-order-top">
+        <div>
+          <span class="past-order-id">${order.orderId}</span>
+          <div class="past-order-date">${order.date} at ${order.time}</div>
+        </div>
+        <span class="past-order-token">${order.token}</span>
+      </div>
+      <div class="past-order-items">
+        <strong>Items:</strong> ${order.itemsSummary}
+      </div>
+      <div class="past-order-total">
+        <span>Total Paid:</span>
+        <strong>₹${order.grandTotal}</strong>
+      </div>
+    `;
+    pastOrdersList.appendChild(card);
+  });
+}
+
 function loadCartFromStorage() {
   const savedData = localStorage.getItem("campusCafeCart");
   if (savedData) {
@@ -573,11 +634,39 @@ orderModal.addEventListener("click", function (event) {
 });
 
 // =============================================================================
+
+// Past Orders Event Listeners
+openPastOrdersBtn.addEventListener("click", function () {
+  renderPastOrders();
+  pastOrdersModal.classList.add("active");
+});
+
+closePastOrdersBtn.addEventListener("click", function () {
+  pastOrdersModal.classList.remove("active");
+});
+
+pastOrdersModal.addEventListener("click", function (event) {
+  if (event.target === pastOrdersModal) {
+    pastOrdersModal.classList.remove("active");
+  }
+});
+
+clearOrderHistoryBtn.addEventListener("click", function () {
+  if (pastOrders.length === 0) return;
+  const userConfirmed = confirm("Are you sure you want to clear your entire order history?");
+  if (userConfirmed) {
+    pastOrders = [];
+    saveOrderHistory();
+    renderPastOrders();
+  }
+});
+
 // 10. INITIALIZATION (On Page Load)
 // =============================================================================
 document.addEventListener("DOMContentLoaded", function () {
   // 1. Retrieve any saved cart items from LocalStorage
   loadCartFromStorage();
+  loadOrderHistory();
 
   // 2. Render all menu items on initial load
   displayMenu(menuItems);
