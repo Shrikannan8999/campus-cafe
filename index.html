@@ -41,6 +41,12 @@
 
       <!-- Cart Button in Header with dynamic item counter -->
       <div class="nav-actions">
+        <!-- Student Profile Button -->
+        <button class="nav-student-btn" id="openStudentBtn" title="Student Profile & ID">
+          <span class="student-avatar-icon">👤</span>
+          <span id="navStudentLabel">Shrikannan (SK-8999)</span>
+        </button>
+
         <!-- Past Orders Button -->
         <button class="nav-history-btn" id="openPastOrdersBtn" title="View past orders">
           <span>📜 Orders</span>
@@ -269,6 +275,14 @@
 
         <div class="receipt-details">
           <div class="receipt-row">
+            <span>Student:</span>
+            <strong id="receiptStudentInfo">Shrikannan (SK-8999)</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Payment Method:</span>
+            <strong id="receiptPaymentMethod">UPI Payment</strong>
+          </div>
+          <div class="receipt-row">
             <span>Total Food Items:</span>
             <strong id="receiptItemCount">0 items</strong>
           </div>
@@ -298,7 +312,7 @@
 
   <!-- =========================================================================
        PAST ORDERS HISTORY MODAL
-       Displays previous simulated orders stored in browser LocalStorage.
+       Displays your previous orders stored in browser LocalStorage.
        ========================================================================= -->
   <div class="modal-backdrop" id="pastOrdersModal">
     <div class="modal-box modal-wide">
@@ -350,7 +364,7 @@
           <h3>Why Was It Developed?</h3>
           <p>
             During busy recess and lunch breaks, college canteens face severe rush and long queues. 
-            This website demonstrates how a lightweight, responsive web application can help students 
+            Campus Café enables students to easily help students 
             pre-calculate their order and streamline cafeteria counters.
           </p>
         </div>
@@ -360,7 +374,7 @@
           <h3>How Does It Work?</h3>
           <p>
             Browse daily menu items, add your favorite dishes to your food tray, and preview an instant automatic 
-            bill calculation. Receive a simulated pickup token to collect your hot meal quickly at Counter #1.
+            bill calculation. Receive a counter pickup token to collect your hot meal quickly at Counter #1.
           </p>
         </div>
 
@@ -391,6 +405,126 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- =========================================================================
+       PAYMENT PORTAL MODAL
+       Allows students to choose UPI QR scanner, Campus Smart Card, or Cash.
+       ========================================================================= -->
+  <div class="modal-backdrop" id="paymentModal">
+    <div class="modal-box modal-wide">
+      <div class="payment-modal-header">
+        <h2 class="modal-title">💳 Complete Payment</h2>
+        <div class="payment-amount-badge" id="paymentPayableAmount">₹0.00</div>
+      </div>
+      <p class="modal-subtitle">Choose your preferred payment method to generate your order token</p>
+
+      <!-- Payment Method Tabs -->
+      <div class="payment-methods-grid">
+        <button class="payment-method-card active" data-method="upi">
+          <span class="pay-icon">📱</span>
+          <strong>UPI / QR Code</strong>
+          <span class="pay-tag">Google Pay • PhonePe</span>
+        </button>
+        <button class="payment-method-card" data-method="card">
+          <span class="pay-icon">🪪</span>
+          <strong>Campus Smart Card</strong>
+          <span class="pay-tag" id="smartCardBalanceTag">Balance: ₹500.00</span>
+        </button>
+        <button class="payment-method-card" data-method="cash">
+          <span class="pay-icon">💵</span>
+          <strong>Cash on Pickup</strong>
+          <span class="pay-tag">Pay at Counter #1</span>
+        </button>
+      </div>
+
+      <!-- Payment Method Dynamic Views -->
+      <div class="payment-method-view" id="upiPaymentView">
+        <div class="qr-scanner-card">
+          <div class="qr-scanner-frame">
+            <img 
+              src="images/upi-qr.svg" 
+              alt="Campus Cafe UPI Payment Scanner" 
+              class="upi-qr-image"
+              id="upiQrScannerImg"
+              onerror="this.src='images/upi-qr.png'"
+            />
+          </div>
+          <p class="qr-instruction">Scan with Google Pay, PhonePe, Paytm, or BHIM</p>
+          <div class="upi-id-box">
+            <span>UPI ID: <strong>campuscafe@upi</strong></span>
+          </div>
+        </div>
+        <div class="form-group-pay">
+          <label for="upiRefInput">UPI Transaction / UTR No. (Optional):</label>
+          <input type="text" id="upiRefInput" placeholder="e.g. 482910394821" maxlength="20">
+        </div>
+      </div>
+
+      <div class="payment-method-view" id="cardPaymentView" style="display: none;">
+        <div class="student-card-visual">
+          <div class="smart-card-chip">💳</div>
+          <div class="smart-card-header">CAMPUS CAFETERIA SMART CARD</div>
+          <div class="smart-card-name" id="smartCardStudentName">Shrikannan</div>
+          <div class="smart-card-id" id="smartCardStudentId">Roll No: SK-8999</div>
+          <div class="smart-card-balance-box">
+            <span>Available Balance:</span>
+            <strong id="smartCardDisplayBalance">₹500.00</strong>
+          </div>
+        </div>
+        <p class="card-instruction">The bill amount will be deducted directly from your campus card balance.</p>
+      </div>
+
+      <div class="payment-method-view" id="cashPaymentView" style="display: none;">
+        <div class="cash-card-visual">
+          <span class="cash-big-icon">💵</span>
+          <h4>Pay Cash at Counter #1</h4>
+          <p>Your order will be sent to the kitchen immediately. Please hand over the exact cash at Counter #1 when collecting your food tray.</p>
+        </div>
+      </div>
+
+      <!-- Payment Actions -->
+      <div class="payment-actions">
+        <button class="btn btn-secondary" id="cancelPaymentBtn">Cancel</button>
+        <button class="btn btn-primary" id="confirmPaymentBtn">
+          <span>Confirm & Pay</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       STUDENT PROFILE & ACCOUNT MODAL
+       View and manage student profile details and canteen balance.
+       ========================================================================= -->
+  <div class="modal-backdrop" id="studentModal">
+    <div class="modal-box">
+      <div class="modal-header-icon">👤</div>
+      <h2 class="modal-title">Student Profile</h2>
+      <p class="modal-subtitle">Your college cafeteria identification</p>
+
+      <form id="studentProfileForm" class="student-form">
+        <div class="form-group">
+          <label for="studentNameInput">Student Full Name:</label>
+          <input type="text" id="studentNameInput" value="Shrikannan" required>
+        </div>
+        <div class="form-group">
+          <label for="studentIdInput">College Roll Number / ID:</label>
+          <input type="text" id="studentIdInput" value="SK-8999" required>
+        </div>
+        <div class="form-group">
+          <label for="studentCardBalanceInput">Canteen Card Balance (₹):</label>
+          <input type="number" id="studentCardBalanceInput" value="500" min="0" step="10">
+        </div>
+        
+        <div class="form-actions-student">
+          <button type="submit" class="btn btn-primary">Save Profile</button>
+          <button type="button" class="btn btn-secondary" id="closeStudentBtn">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Relative JavaScript link for static hosting and Netlify deployment -->
   <script src="js/script.js"></script>

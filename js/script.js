@@ -9,7 +9,7 @@
    - Cart management: Add, Increase (+), Decrease (-), Remove (X), Clear All
    - Automatic bill calculation: Subtotal, 5% GST, Grand Total
    - LocalStorage synchronization to remember cart items on refresh
-   - Simulated order placement with random Reference & Token numbers
+   - Order payment portal and instant token receipt generation
    ========================================================================== */
 
 // =============================================================================
@@ -137,6 +137,16 @@ let cart = [];
 let selectedCategory = "all";
 let pastOrders = [];
 
+// Active Student Profile (Defaults to Shrikannan)
+let currentStudent = {
+  name: "Shrikannan",
+  studentId: "SK-8999",
+  cardBalance: 500.00
+};
+
+// Selected Payment Method ('upi' | 'card' | 'cash')
+let selectedPaymentMethod = "upi";
+
 // =============================================================================
 // 3. DOM ELEMENT REFERENCES
 // =============================================================================
@@ -172,6 +182,31 @@ const closePastOrdersBtn = document.getElementById("closePastOrdersBtn");
 const pastOrdersList = document.getElementById("pastOrdersList");
 const clearOrderHistoryBtn = document.getElementById("clearOrderHistoryBtn");
 
+// Student Profile Elements
+const openStudentBtn = document.getElementById("openStudentBtn");
+const closeStudentBtn = document.getElementById("closeStudentBtn");
+const studentModal = document.getElementById("studentModal");
+const studentProfileForm = document.getElementById("studentProfileForm");
+const studentNameInput = document.getElementById("studentNameInput");
+const studentIdInput = document.getElementById("studentIdInput");
+const studentCardBalanceInput = document.getElementById("studentCardBalanceInput");
+const navStudentLabel = document.getElementById("navStudentLabel");
+const smartCardStudentName = document.getElementById("smartCardStudentName");
+const smartCardStudentId = document.getElementById("smartCardStudentId");
+const smartCardDisplayBalance = document.getElementById("smartCardDisplayBalance");
+const smartCardBalanceTag = document.getElementById("smartCardBalanceTag");
+
+// Payment Portal Elements
+const paymentModal = document.getElementById("paymentModal");
+const paymentPayableAmount = document.getElementById("paymentPayableAmount");
+const cancelPaymentBtn = document.getElementById("cancelPaymentBtn");
+const confirmPaymentBtn = document.getElementById("confirmPaymentBtn");
+const upiPaymentView = document.getElementById("upiPaymentView");
+const cardPaymentView = document.getElementById("cardPaymentView");
+const cashPaymentView = document.getElementById("cashPaymentView");
+const receiptStudentInfo = document.getElementById("receiptStudentInfo");
+const receiptPaymentMethod = document.getElementById("receiptPaymentMethod");
+
 // =============================================================================
 // 4. LOCALSTORAGE MANAGEMENT
 // Saves and retrieves cart data from the browser's storage.
@@ -180,6 +215,40 @@ const clearOrderHistoryBtn = document.getElementById("clearOrderHistoryBtn");
 /**
  * Converts the cart array into a JSON string and saves it to LocalStorage.
  */
+
+// -----------------------------------------------------------------------------
+// STUDENT PROFILE MANAGEMENT (LocalStorage)
+// -----------------------------------------------------------------------------
+function saveStudentProfile() {
+  localStorage.setItem("campusCafeStudent", JSON.stringify(currentStudent));
+}
+
+function loadStudentProfile() {
+  const savedStudent = localStorage.getItem("campusCafeStudent");
+  if (savedStudent) {
+    try {
+      currentStudent = JSON.parse(savedStudent);
+    } catch (e) {
+      console.error("Could not parse saved student profile:", e);
+    }
+  }
+  updateStudentDisplay();
+}
+
+function updateStudentDisplay() {
+  if (navStudentLabel) {
+    navStudentLabel.textContent = `${currentStudent.name} (${currentStudent.studentId})`;
+  }
+  if (studentNameInput) studentNameInput.value = currentStudent.name;
+  if (studentIdInput) studentIdInput.value = currentStudent.studentId;
+  if (studentCardBalanceInput) studentCardBalanceInput.value = currentStudent.cardBalance;
+
+  if (smartCardStudentName) smartCardStudentName.textContent = currentStudent.name;
+  if (smartCardStudentId) smartCardStudentId.textContent = `Roll No: ${currentStudent.studentId}`;
+  if (smartCardDisplayBalance) smartCardDisplayBalance.textContent = `₹${Number(currentStudent.cardBalance).toFixed(2)}`;
+  if (smartCardBalanceTag) smartCardBalanceTag.textContent = `Balance: ₹${Number(currentStudent.cardBalance).toFixed(2)}`;
+}
+
 function saveCartToStorage() {
   localStorage.setItem("campusCafeCart", JSON.stringify(cart));
 }
@@ -574,12 +643,12 @@ function updateCartDisplay() {
 }
 
 // =============================================================================
-// 9. SIMULATED ORDER CHECKOUT & RECEIPT MODAL
+// 9. ORDER PAYMENT CHECKOUT & RECEIPT MODAL
 // Generates random order reference and token, displays modal, and resets cart.
 // =============================================================================
 
 /**
- * Handles simulated checkout when student clicks "Place Simulated Order".
+ * Handles checkout and opens the Payment Portal.
  */
 function placeOrder() {
   // Empty cart validation
@@ -619,7 +688,7 @@ function placeOrder() {
   updateCartDisplay();
 }
 
-placeOrderBtn.addEventListener("click", placeOrder);
+placeOrderBtn.addEventListener("click", openPaymentPortal);
 
 // Close modal when button is clicked
 closeModalBtn.addEventListener("click", function () {
@@ -661,10 +730,67 @@ clearOrderHistoryBtn.addEventListener("click", function () {
   }
 });
 
+
+// Payment Method Tabs Switching
+const paymentMethodCards = document.querySelectorAll(".payment-method-card");
+paymentMethodCards.forEach(function (cardBtn) {
+  cardBtn.addEventListener("click", function () {
+    paymentMethodCards.forEach(btn => btn.classList.remove("active"));
+    cardBtn.classList.add("active");
+
+    selectedPaymentMethod = cardBtn.getAttribute("data-method");
+
+    // Toggle views
+    upiPaymentView.style.display = selectedPaymentMethod === "upi" ? "block" : "none";
+    cardPaymentView.style.display = selectedPaymentMethod === "card" ? "block" : "none";
+    cashPaymentView.style.display = selectedPaymentMethod === "cash" ? "block" : "none";
+  });
+});
+
+cancelPaymentBtn.addEventListener("click", function () {
+  paymentModal.classList.remove("active");
+});
+
+confirmPaymentBtn.addEventListener("click", finalizeOrderAfterPayment);
+
+paymentModal.addEventListener("click", function (event) {
+  if (event.target === paymentModal) {
+    paymentModal.classList.remove("active");
+  }
+});
+
+// Student Modal Event Listeners
+openStudentBtn.addEventListener("click", function () {
+  updateStudentDisplay();
+  studentModal.classList.add("active");
+});
+
+closeStudentBtn.addEventListener("click", function () {
+  studentModal.classList.remove("active");
+});
+
+studentModal.addEventListener("click", function (event) {
+  if (event.target === studentModal) {
+    studentModal.classList.remove("active");
+  }
+});
+
+studentProfileForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  currentStudent.name = studentNameInput.value.trim() || "Shrikannan";
+  currentStudent.studentId = studentIdInput.value.trim() || "SK-8999";
+  currentStudent.cardBalance = parseFloat(studentCardBalanceInput.value) || 500.00;
+
+  saveStudentProfile();
+  updateStudentDisplay();
+  studentModal.classList.remove("active");
+});
+
 // 10. INITIALIZATION (On Page Load)
 // =============================================================================
 document.addEventListener("DOMContentLoaded", function () {
   // 1. Retrieve any saved cart items from LocalStorage
+  loadStudentProfile();
   loadCartFromStorage();
   loadOrderHistory();
 

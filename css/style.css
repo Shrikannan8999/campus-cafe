@@ -1269,3 +1269,300 @@ button {
   padding: 35px 10px;
   color: var(--coffee-light);
 }
+
+
+/* ---------- STUDENT PROFILE & PAYMENT MODALS ---------- */
+.nav-student-btn {
+  background-color: var(--orange-badge-bg);
+  color: var(--coffee-dark);
+  border: 1.5px solid var(--orange-light);
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-student-btn:hover {
+  background-color: #FFE0B2;
+  border-color: var(--orange-primary);
+  color: var(--orange-primary);
+}
+
+.student-avatar-icon {
+  font-size: 1rem;
+}
+
+/* Payment Modal Elements */
+.payment-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.payment-amount-badge {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--orange-primary);
+  background-color: var(--orange-badge-bg);
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--orange-light);
+}
+
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.payment-method-card {
+  background-color: #FFFFFF;
+  border: 2px solid var(--coffee-border);
+  border-radius: var(--radius-md);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.payment-method-card:hover {
+  border-color: var(--orange-soft);
+  background-color: var(--bg-cream-soft);
+}
+
+.payment-method-card.active {
+  border-color: var(--orange-primary);
+  background-color: var(--orange-badge-bg);
+  box-shadow: 0 4px 12px rgba(230, 81, 0, 0.15);
+}
+
+.pay-icon {
+  font-size: 1.6rem;
+}
+
+.payment-method-card strong {
+  font-size: 0.86rem;
+  color: var(--coffee-dark);
+}
+
+.pay-tag {
+  font-size: 0.7rem;
+  color: var(--coffee-light);
+}
+
+/* UPI QR View */
+.payment-method-view {
+  background-color: var(--bg-cream-soft);
+  border: 1.5px dashed var(--coffee-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.qr-scanner-card {
+  text-align: center;
+}
+
+.qr-scanner-frame {
+  display: inline-block;
+  background-color: #FFFFFF;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  border: 1.5px solid var(--coffee-border);
+  margin-bottom: 10px;
+}
+
+.upi-qr-image {
+  width: 180px;
+  height: 215px;
+  display: block;
+  object-fit: contain;
+}
+
+.qr-instruction {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--coffee-dark);
+  margin-bottom: 8px;
+}
+
+.upi-id-box {
+  display: inline-block;
+  background-color: #FFFFFF;
+  border: 1px solid var(--coffee-border);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--coffee-medium);
+}
+
+.form-group-pay {
+  margin-top: 14px;
+  text-align: left;
+}
+
+.form-group-pay label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--coffee-dark);
+  margin-bottom: 4px;
+}
+
+.form-group-pay input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--coffee-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.form-group-pay input:focus {
+  border-color: var(--orange-primary);
+}
+
+/* Smart Card View */
+.student-card-visual {
+  background: linear-gradient(135deg, #3A2312 0%, #543722 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: left;
+  box-shadow: var(--shadow-medium);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.smart-card-chip {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.smart-card-header {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: #E5D7CA;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.smart-card-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.smart-card-id {
+  font-size: 0.85rem;
+  color: #FFCC80;
+  margin-bottom: 14px;
+}
+
+.smart-card-balance-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
+  font-size: 0.9rem;
+}
+
+.smart-card-balance-box strong {
+  font-size: 1.15rem;
+  color: #FFB74D;
+}
+
+.card-instruction {
+  font-size: 0.82rem;
+  color: var(--coffee-light);
+  text-align: center;
+}
+
+/* Cash View */
+.cash-card-visual {
+  text-align: center;
+  padding: 20px;
+}
+
+.cash-big-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cash-card-visual h4 {
+  font-size: 1.15rem;
+  color: var(--coffee-dark);
+  margin-bottom: 8px;
+}
+
+.cash-card-visual p {
+  font-size: 0.86rem;
+  color: var(--coffee-light);
+  line-height: 1.5;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Student Profile Form */
+.student-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--coffee-dark);
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--coffee-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: var(--orange-primary);
+}
+
+.form-actions-student {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions-student button {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .payment-methods-grid {
+    grid-template-columns: 1fr;
+  }
+}
